@@ -1,0 +1,14 @@
+@model string
+
+<script>
+    (function () {
+        window.opener.postMessage({
+            type: 'authenticated',
+            payload: {
+                token: '@Html.Raw(Model)'
+            }
+        }, 'http://localhost:8080');
+
+        window.close();
+    })();
+</script>

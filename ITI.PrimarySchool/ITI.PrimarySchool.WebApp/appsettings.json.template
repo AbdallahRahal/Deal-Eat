@@ -1,0 +1,13 @@
+{
+  "ConnectionStrings": {
+    "PrimarySchool": "<connection string>"
+  },
+  "JwtBearer": {
+    "SigningKey": "<signing key>",
+    "Issuer": "<issuer>",
+    "Audience": "<audience>"
+  },
+  "Spa": {
+    "Url": "<SPA url>"
+  }
+}
