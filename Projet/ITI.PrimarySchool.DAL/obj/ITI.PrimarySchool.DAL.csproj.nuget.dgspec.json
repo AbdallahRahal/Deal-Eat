@@ -1,0 +1,72 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\S4\\Deal-Eat\\Projet\\ITI.PrimarySchool.DAL\\ITI.PrimarySchool.DAL.csproj": {}
+  },
+  "projects": {
+    "C:\\S4\\Deal-Eat\\Projet\\ITI.PrimarySchool.DAL\\ITI.PrimarySchool.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\S4\\Deal-Eat\\Projet\\ITI.PrimarySchool.DAL\\ITI.PrimarySchool.DAL.csproj",
+        "projectName": "ITI.PrimarySchool.DAL",
+        "projectPath": "C:\\S4\\Deal-Eat\\Projet\\ITI.PrimarySchool.DAL\\ITI.PrimarySchool.DAL.csproj",
+        "packagesPath": "C:\\Users\\Abdel\\.nuget\\packages\\",
+        "outputPath": "C:\\S4\\Deal-Eat\\Projet\\ITI.PrimarySchool.DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Abdel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.30, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
