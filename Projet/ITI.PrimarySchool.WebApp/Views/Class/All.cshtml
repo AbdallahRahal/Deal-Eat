@@ -1,0 +1,19 @@
+@using ITI.PrimarySchool.DAL
+@model IEnumerable<ClassData>
+
+<table>
+    <tr>
+        <td>Class Id</td>
+        <td>Name</td>
+        <td>Level</td>
+    </tr>
+
+    @foreach (ClassData c in Model)
+    {
+        <tr>
+            <td>@c.ClassId</td>
+            <td>@c.Name</td>
+            <td>@c.Level</td>
+        </tr>
+    }
+</table>

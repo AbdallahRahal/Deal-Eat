@@ -1,0 +1,21 @@
+@using ITI.PrimarySchool.DAL
+@model IEnumerable<StudentData>
+
+<h1>Students (@Model.Count())</h1>
+<table>
+    <tr>
+        <td>StudentId</td>
+        <td>First name</td>
+        <td>Last name</td>
+        <td>Birth date</td>
+    </tr>
+    @foreach (StudentData s in Model)
+    {
+        <tr>
+            <td>@s.StudentId</td>
+            <td>@s.FirstName</td>
+            <td>@s.LastName</td>
+            <td>@s.BirthDate</td>
+        </tr>
+    }
+</table>
