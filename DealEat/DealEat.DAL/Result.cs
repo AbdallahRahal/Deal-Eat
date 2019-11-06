@@ -4,10 +4,10 @@ namespace DealEat.DAL
 {
     public class Result<TSuccess> : Result
     {
-        public Result( Status status, TSuccess success, string errorMessage )
-            : base( status, errorMessage )
+        public Result(Status status, TSuccess success, string errorMessage)
+            : base(status, errorMessage)
         {
-            if( !HasError ) Content = success;
+            if (!HasError) Content = success;
         }
 
         public TSuccess Content { get; }
@@ -15,15 +15,15 @@ namespace DealEat.DAL
 
     public class Result
     {
-        public Result( Status status )
-            : this( status, string.Empty )
+        public Result(Status status)
+            : this(status, string.Empty)
         {
         }
 
-        public Result( Status status, string errorMessage )
+        public Result(Status status, string errorMessage)
         {
             Status = status;
-            if( errorMessage == null ) errorMessage = string.Empty;
+            if (errorMessage == null) errorMessage = string.Empty;
             ErrorMessage = errorMessage;
         }
 
@@ -33,21 +33,21 @@ namespace DealEat.DAL
 
         public string ErrorMessage { get; }
 
-        public static Result<T> Success<T>( T content ) => Success( Status.Ok, content );
+        public static Result<T> Success<T>(T content) => Success(Status.Ok, content);
 
-        public static Result<T> Success<T>( Status status, T content ) => new Result<T>( status, content, null );
+        public static Result<T> Success<T>(Status status, T content) => new Result<T>(status, content, null);
 
-        public static Result<T> Failure<T>( Status status, string errorMessage )
+        public static Result<T> Failure<T>(Status status, string errorMessage)
         {
-            if( string.IsNullOrEmpty( errorMessage ) ) throw new ArgumentException( "The error message must be not null nor whitespace.", nameof( errorMessage ) );
-            return new Result<T>( status, default( T ), errorMessage );
+            if (string.IsNullOrEmpty(errorMessage)) throw new ArgumentException("The error message must be not null nor whitespace.", nameof(errorMessage));
+            return new Result<T>(status, default(T), errorMessage);
         }
 
-        public static Result Success( ) => new Result( Status.Ok );
+        public static Result Success() => new Result(Status.Ok);
 
-        public static Result Success( Status status ) => new Result( status );
+        public static Result Success(Status status) => new Result(status);
 
-        public static Result Failure( Status status, string errorMessage ) => new Result( status, errorMessage );
+        public static Result Failure(Status status, string errorMessage) => new Result(status, errorMessage);
     }
 
     public enum Status

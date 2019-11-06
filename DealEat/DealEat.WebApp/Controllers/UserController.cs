@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using DealEat.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using DealEat.WebApp.Authentication;
+using DealEat.DAL;
 
 namespace DealEat.WebApp.Controllers
 {
@@ -14,19 +15,19 @@ namespace DealEat.WebApp.Controllers
     [Authorize( AuthenticationSchemes = JwtBearerAuthentication.AuthenticationScheme)]
     public class UserController : Controller
     {
-        readonly UserGateway userGateway;
+        UserGateway _userGateway;
 
         public UserController(UserGateway userGateway)
         {
             _userGateway = userGateway;
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public async Task<IActionResult> GetUserList()
         {
             IEnumerable<UserData> result = await _userGateway.GetAll();
             return Ok(result);
-        }
+        }*/
 
         [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUserById(int id)
@@ -35,16 +36,16 @@ namespace DealEat.WebApp.Controllers
             return this.CreateResult(result);
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public async Task<IActionResult> CreateUser([FromBody] UserViewModel model)
         {
-            Result<int> result = await _userGateway.Create(/* METTRE LES MODELS ex : model.Name*/);
+            Result<int> result = await _userGateway.Create(METTRE LES MODELS ex : model.Name);
             return this.CreateResult(result, o =>
             {
                 o.RouteName = "GetUser";
                 o.RouteValues = id => new { id };
             });
-        }
+        }*/
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
