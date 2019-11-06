@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DealEat.DAL
 {
-    class UserData
+    public class UserData
     {
         public int UserId { get; set; }
         public enum Type { merchant, admin, user }

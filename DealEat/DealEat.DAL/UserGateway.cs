@@ -9,7 +9,7 @@ using System.Data;
 
 namespace DealEat.DAL
 {
-    class UserGateway
+    public class UserGateway
     {
         readonly string _connectionString;
 
