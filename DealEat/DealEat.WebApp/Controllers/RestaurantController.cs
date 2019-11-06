@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using DealEat.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using DealEat.WebApp.Authentication;
+using DealEat.DAL;
 
 namespace DealEat.WebApp.Controllers
 {
