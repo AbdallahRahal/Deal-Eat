@@ -18,16 +18,18 @@ namespace DealEat.DAL
             _connectionString = connectionString;
         }
 
-        public async Task<UserData> FindById(int userId)
+        public async Task<Result<UserData>> FindById(int userId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                return await con.QueryFirstOrDefaultAsync<UserData>(
+                UserData user = await con.QueryFirstOrDefaultAsync<UserData>(
                     "select u.UserId, u.Type, u.Name, u.LastName, u.Pseudo, u.[Password] " +
                     "from dealeat.vUser as u " +
                     "where u.UserId = @UserId " ,
                     
                     new { UserId = userId });
+                if (user == null) return Result.Failure<UserData>(Status.NotFound, "User not found.");
+                return Result.Success(user);
             }
         }
 
@@ -44,11 +46,20 @@ namespace DealEat.DAL
             }
         }*/
 
-        public async Task Delete(int userId)
+        public async Task<Result> Delete(int userId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                await con.ExecuteAsync("dealeat.sUserDelete", new { UserId = userId }, commandType: CommandType.StoredProcedure);
+                var p = new DynamicParameters();
+                p.Add("@UserId", userId);
+                p.Add("@Status", dbType: DbType.Int32, direction: ParameterDirection.ReturnValue);
+                await con.ExecuteAsync("dealeat.sUserDelete", p, commandType: CommandType.StoredProcedure);
+
+                int status = p.Get<int>("@Status");
+                if (status == 1) return Result.Failure(Status.NotFound, "User not found.");
+
+                Debug.Assert(status == 0);
+                return Result.Success();
             }
         }
 
