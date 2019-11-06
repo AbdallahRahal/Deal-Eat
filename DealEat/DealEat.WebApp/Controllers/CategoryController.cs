@@ -14,7 +14,7 @@ namespace DealEat.WebApp.Controllers
     [Route("api/[controller]")]
     [Authorize( AuthenticationSchemes = JwtBearerAuthentication.AuthenticationScheme)]
     public class CategoryController : Controller
-    {
+    {/*
         readonly CategoryGateway categoryGateway;
         readonly RestaurantGateway restaurantGateway;
 
@@ -41,7 +41,7 @@ namespace DealEat.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCategory([FromBody] CategoryViewModel model)
         {
-            Result<int> result = await _categoryGateway.Create(/* METTRE LES MODELS ex : model.Name*/);
+            Result<int> result = await _categoryGateway.Create( METTRE LES MODELS ex : model.Name);
             return this.CreateResult(result, o =>
             {
                 o.RouteName = "GetCategory";
@@ -54,6 +54,6 @@ namespace DealEat.WebApp.Controllers
         {
             Result result = await _categoryGateway.Delete(id);
             return this.CreateResult(result);
-        }
+        }*/
     }
 }
