@@ -1,0 +1,10 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DealEat.DAL
+{
+    class UserData
+    {
+    }
+}
