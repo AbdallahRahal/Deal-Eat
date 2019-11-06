@@ -1826,23 +1826,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Abdel\\.nuget\\packages\\": {},
+    "C:\\Users\\samia\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\S4\\Deal-Eat\\DealEat\\DealEat.DAL\\DealEat.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\samia\\OneDrive\\Bureau\\PI_S4\\Deal-Eat\\DealEat\\DealEat.DAL\\DealEat.DAL.csproj",
       "projectName": "DealEat.DAL",
-      "projectPath": "C:\\S4\\Deal-Eat\\DealEat\\DealEat.DAL\\DealEat.DAL.csproj",
-      "packagesPath": "C:\\Users\\Abdel\\.nuget\\packages\\",
-      "outputPath": "C:\\S4\\Deal-Eat\\DealEat\\DealEat.DAL\\obj\\",
+      "projectPath": "C:\\Users\\samia\\OneDrive\\Bureau\\PI_S4\\Deal-Eat\\DealEat\\DealEat.DAL\\DealEat.DAL.csproj",
+      "packagesPath": "C:\\Users\\samia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\samia\\OneDrive\\Bureau\\PI_S4\\Deal-Eat\\DealEat\\DealEat.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Abdel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\samia\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1882,10 +1882,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
