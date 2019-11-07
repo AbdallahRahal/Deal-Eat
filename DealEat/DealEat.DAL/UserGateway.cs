@@ -33,6 +33,16 @@ namespace DealEat.DAL
             }
         }
 
+        public Task<UserData> FindByGoogleId(string googleId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task CreateOrUpdateGoogleUser(string email, string googleId, string refreshToken)
+        {
+            throw new NotImplementedException();
+        }
+
         // POUR LE MAIL
         /*public async Task<UserData> FindByEmail(string email)
         {

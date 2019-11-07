@@ -15,20 +15,20 @@ namespace DealEat.WebApp.Services
             _passwordHasher = passwordHasher;
         }
 
-        public Task<Result<int>> CreatePasswordUser( string email, string password )
-        {
-            return _userGateway.CreatePasswordUser( email, _passwordHasher.HashPassword( password ) );
-        }
+        //public Task<Result<int>> CreatePasswordUser( string email, string password )
+        //{
+        //    return _userGateway.CreatePasswordUser( email, _passwordHasher.HashPassword( password ) );
+        //}
 
-        public async Task<UserData> FindUser( string email, string password )
-        {
-            UserData user = await _userGateway.FindByEmail( email );
-            if( user != null && _passwordHasher.VerifyHashedPassword( user.Password, password ) == PasswordVerificationResult.Success )
-            {
-                return user;
-            }
+        //public async Task<UserData> FindUser( string email, string password )
+        //{
+        //    UserData user = await _userGateway.FindByEmail( email );
+        //    if( user != null && _passwordHasher.VerifyHashedPassword( user.Password, password ) == PasswordVerificationResult.Success )
+        //    {
+        //        return user;
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
     }
 }

@@ -3,7 +3,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
-import requireAuth from './helpers/requireAuth';
+//import requireAuth from './helpers/requireAuth';
 
 // Components
 import Home from './components/Home.vue'
@@ -13,10 +13,10 @@ import Logout from './components/Logout.vue'
 //import User from './components/User.vue'
 
 const routes = [
-    { path: '/home', component: Home, beforeEnter: requireAuth },
-    
+    { path: '/home', component: Home },
+    { path: '', component: Home },
     { path: '/login', component: Login },
-    { path: '/logout', component: Logout, beforeEnter: requireAuth },
+    //{ path: '/logout', component: Logout, beforeEnter: requireAuth },
 
     //{ path: '/user', component: User },
 
