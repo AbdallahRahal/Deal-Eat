@@ -3,6 +3,7 @@ create proc dealeat.sSoldCreate
 	@Reduction int,
 	@Start_Date date,
 	@End_Date date,
+	@BracketId int,
 	@SoldId int out
 )
 as

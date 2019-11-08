@@ -8,3 +8,4 @@ create table dealeat.tRestaurant_Bracket
 	constraint FK_dealeat_tRestaurant_Bracket_tRestaurant foreign key(RestaurantId) references dealeat.tRestaurant_Bracket(RestaurantId),
 	constraint FK_dealeat_tRestaurant_Bracket_tBracket foreign key(BracketId) references dealeat.tRestaurant_Bracket(BracketId)
 );
+insert into dealeat.tRestaurant_Bracket(RestaurantId, BracketId) values(0, 0);

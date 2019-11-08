@@ -1,6 +1,6 @@
 create proc dealeat.sCategoryCreate
 (
-	@Category nvarchar(45),
+	@Name nvarchar(45),
 	@CategoryId int out
 )
 as

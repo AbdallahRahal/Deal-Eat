@@ -2,6 +2,7 @@ create proc dealeat.sFeedbackCreate
 (
 	@Note int,
 	@Feedback nvarchar(45),
+	@Date date,
 	@UserId int,
 	@RestaurantId int,
 	@FeedbackId int out

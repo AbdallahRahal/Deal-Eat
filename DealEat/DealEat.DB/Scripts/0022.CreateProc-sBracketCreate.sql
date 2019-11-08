@@ -1,6 +1,9 @@
 create proc dealeat.sBracketCreate
 (
-	@Type nvarchar(45),
+	@Name nvarchar(45),
+	@Information text,
+	@PhotoLink nvarchar(45),
+	@Price int,
 	@BracketId int out
 )
 as
