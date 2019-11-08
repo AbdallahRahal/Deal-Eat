@@ -32,7 +32,7 @@ namespace DealEat.WebApp.Controllers
         [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUserById(int id)
         {
-            Result<UserData> result = await _userGateway.FindById(id);
+            Result<UserData> result = await _userGateway.FindById( id );
             return this.CreateResult(result);
         }
 

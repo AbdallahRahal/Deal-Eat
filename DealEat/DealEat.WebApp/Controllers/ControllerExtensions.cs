@@ -1,5 +1,5 @@
 ﻿using System;
-using ITI.PrimarySchool.DAL;
+using DealEat.DAL;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DealEat.WebApp.Controllers

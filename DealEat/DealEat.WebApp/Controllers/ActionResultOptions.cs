@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ITI.PrimarySchool.WebApp.Controllers
+namespace DealEat.WebApp.Controllers
 {
     public class ActionResultOptions<T>
     {
