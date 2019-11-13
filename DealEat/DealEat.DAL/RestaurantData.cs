@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DealEat.DAL
 {
-    class RestaurantData
+    public class RestaurantData
     {
         // Data on View : dealeat.vRestaurant
 

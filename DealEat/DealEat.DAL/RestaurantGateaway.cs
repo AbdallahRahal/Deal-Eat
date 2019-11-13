@@ -9,33 +9,42 @@ using System.Data;
 
 namespace DealEat.DAL
 {
-    class RestaurantGateaway
+    public class RestaurantGateway
     {
         readonly string _connectionString;
 
 
-        public RestaurantGateaway(string connectionString)
+        public RestaurantGateway(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-
-        public async Task<Result<RestaurantData>> FindById(int userId)
+        public async Task<Result<RestaurantData>> FindById(int id)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                RestaurantData user = await con.QueryFirstOrDefaultAsync<RestaurantData>(
-                    "select u.UserId, u.Type, u.Name, u.LastName, u.Pseudo, u.[Password] " +
-                    "from dealeat.vUser as u " +
-                    "where u.UserId = @UserId ",
+                RestaurantData restaurant = await con.QueryFirstOrDefaultAsync<RestaurantData>(
+                    "select r.UserId, r.UserPseudo, r.RestaurantId, r.Name, r.Adresse, r.Photolink, r.Telephone " +
+                    "from dealeat.vRestaurant as r " +
+                    "where r.RestaurantId = @Id ",
 
-                    new { UserId = userId });
-                if (user == null) return null;// Result.Failure<UserData>(Status.NotFound, "User not found.");
-                return Result.Success(user);
+                    new { Id = id });
+                if (restaurant == null) return Result.Failure<RestaurantData>(Status.NotFound, "User not found.");
+                return Result.Success(restaurant);
             }
         }
+        public async Task<Result<RestaurantData>> GetAll()
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                RestaurantData listRestaurant = await con.QueryFirstOrDefaultAsync<RestaurantData>(
+                    @"select r.UserId, r.UserPseudo, r.RestaurantId, r.Name, r.Adresse, r.Photolink, r.Telephone
+                    from dealeat.vRestaurant as r ");
 
-
+                if (listRestaurant == null) return Result.Failure<RestaurantData>(Status.NotFound, "User not found.");
+                return Result.Success(listRestaurant);
+            }
+        }
 
 
 

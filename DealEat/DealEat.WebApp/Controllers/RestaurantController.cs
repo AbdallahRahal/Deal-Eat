@@ -20,12 +20,13 @@ namespace DealEat.WebApp.Controllers
         public RestaurantController(RestaurantGateway restaurantGateway)
         {
             _restaurantGateway = restaurantGateway;
+
         }
 
         [HttpGet]
         public async Task<IActionResult> GetRestaurantList()
         {
-            IEnumerable<RestaurantData> result = await _restaurantGateway.GetAll();
+            Result<RestaurantData> result = await _restaurantGateway.GetAll();
             return Ok(result);
         }
 
@@ -36,6 +37,7 @@ namespace DealEat.WebApp.Controllers
             return this.CreateResult(result);
         }
 
+        /*
         [HttpPost]
         public async Task<IActionResult> CreateRestaurant([FromBody] RestaurantViewModel model)
         {
@@ -53,5 +55,6 @@ namespace DealEat.WebApp.Controllers
             Result result = await _restaurantGateway.Delete(id);
             return this.CreateResult(result);
         }
+        */
     }
 }
