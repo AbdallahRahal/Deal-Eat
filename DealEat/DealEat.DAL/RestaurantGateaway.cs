@@ -38,7 +38,7 @@ namespace DealEat.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 RestaurantData listRestaurant = await con.QueryFirstOrDefaultAsync<RestaurantData>(
-                    @"select r.UserId, r.UserPseudo, r.RestaurantId, r.Name, r.Adresse, r.Photolink, r.Telephone
+                    @"select r.UserId, r.RestaurantId, r.Name, r.Adresse, r.Photolink, r.Telephone
                     from dealeat.vRestaurant as r ");
 
                 if (listRestaurant == null) return Result.Failure<RestaurantData>(Status.NotFound, "User not found.");

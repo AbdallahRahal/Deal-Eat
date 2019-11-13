@@ -11,7 +11,6 @@ namespace DealEat.DAL
 
         // User
         public int UserId { get; set; }
-        public string UserPseudo { get; set; }
         
         // Restaurant
         public int RestaurantId { get; set; }

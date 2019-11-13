@@ -67,7 +67,7 @@ namespace DealEat.WebApp
                 c.AllowAnyHeader();
                 c.AllowAnyMethod();
                 c.AllowCredentials();
-                c.WithOrigins(Configuration["Spa:Host"]);
+               // c.WithOrigins(Configuration["Spa:Host"]);
             });
             app.UseStaticFiles();
 

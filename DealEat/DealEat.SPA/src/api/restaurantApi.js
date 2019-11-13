@@ -11,7 +11,7 @@ export async function getRestaurantListAsync() {
 export async function getRestaurantByIdAsync(restaurantId) {
     return await getAsync(`${endpoint}/${restaurantId}`);
 }
-
+/*
 export async function createRestaurantAsync(model) {
     return await postAsync(endpoint, model);
 }
