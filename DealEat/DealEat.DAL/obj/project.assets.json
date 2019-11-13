@@ -1826,23 +1826,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\butkeim\\.nuget\\packages\\": {},
+    "C:\\Users\\Abdel\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\dev\\Deal-Eat\\DealEat\\DealEat.DAL\\DealEat.DAL.csproj",
+      "projectUniqueName": "C:\\S4\\Deal-Eat\\DealEat\\DealEat.DAL\\DealEat.DAL.csproj",
       "projectName": "DealEat.DAL",
-      "projectPath": "C:\\dev\\Deal-Eat\\DealEat\\DealEat.DAL\\DealEat.DAL.csproj",
-      "packagesPath": "C:\\Users\\butkeim\\.nuget\\packages\\",
-      "outputPath": "C:\\dev\\Deal-Eat\\DealEat\\DealEat.DAL\\obj\\",
+      "projectPath": "C:\\S4\\Deal-Eat\\DealEat\\DealEat.DAL\\DealEat.DAL.csproj",
+      "packagesPath": "C:\\Users\\Abdel\\.nuget\\packages\\",
+      "outputPath": "C:\\S4\\Deal-Eat\\DealEat\\DealEat.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\butkeim\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Abdel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1850,8 +1850,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://www.myget.org/F/intechinfo-release/api/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.2": {
