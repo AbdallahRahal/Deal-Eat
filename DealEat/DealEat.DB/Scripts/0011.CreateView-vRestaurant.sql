@@ -7,14 +7,21 @@ as
 		-- Restaurant
 		RestaurantId = r.RestaurantId,
 		[Name] = r.[Name],
-		[Type] = r.[Type],
 		PhotoLink = r.PhotoLink,
 		Adresse = r.Adresse,
 		Telephone = r.Telephone,
+		-- Category
+		CategoryId = c.CategoryId,
+		CategoryName = c.[Name],
 		-- Feedback
 		FeedbackId = f.FeedbackId,
 		Note = f.Note,
 		Feedback = f.Feedback
 	from dealeat.tUser u
-	left join dealeat.tRestaurant r on tUser.UserId = tRestaurant.UserId
-	left join dealeat.tFeedback f on tUser.UserId = tFeedback.UserId
+	--left join user & restaurant
+	left join dealeat.tRestaurant r on u.UserId = r.UserId
+	--left join user & feedback
+	left join dealeat.tFeedback f on u.UserId = f.UserId
+	--left join restaurant & category
+	left join dealeat.tRestaurant_Category rc on r.RestaurantId = rc.RestaurantId
+	left join dealeat.tCategory c on r.RestaurantId = c.CategoryId

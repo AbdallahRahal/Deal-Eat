@@ -14,4 +14,4 @@ create table dealeat.tUser
 	constraint PK_tUser primary key(UserId),
 	constraint CK_tUser_Type check([Type] in ('merchant','admin','user'))
 );
-
+--insert into dealeat.tUser([Type], Pseudo, [Password], [Name], LastName) values(3, 'UserPseudo', 'UserPassword', 'UserName', 'UserLastName');
