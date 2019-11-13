@@ -6,7 +6,7 @@ create proc dealeat.sUserCreate
 	@Name nvarchar(45),
 	@LastName nvarchar(45),
 	@Email nvarchar(255),
-	@Telephone int(10),
+	@Telephone int,
 	@UserId int out
 )
 as

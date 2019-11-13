@@ -15,7 +15,7 @@ begin
 		return 1;
 	end;
 
-	delete from dealeat.tRestaurant where RestauranttId = @RestaurantId;
+	delete from dealeat.tRestaurant where RestaurantId = @RestaurantId;
 
 	commit;
 	return 0;
