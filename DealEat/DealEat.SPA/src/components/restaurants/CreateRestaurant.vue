@@ -14,5 +14,10 @@
 </template>
 
 <script>
+import { getRestaurantListAsync} from '../../api/studentApi'
+    
+
+
+
 
 </script>
