@@ -8,4 +8,3 @@ create table dealeat.tBracket
 
 	constraint PK_dealeat_tBracket primary key(BracketId),
 );
---insert into dealeat.tBracket([Name], PhotoLink, Information) values('BracketName', 'BracketPhotoLink', 'BracketInformation');
