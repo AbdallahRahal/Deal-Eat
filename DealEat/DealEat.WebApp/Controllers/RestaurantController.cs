@@ -15,7 +15,7 @@ namespace DealEat.WebApp.Controllers
     [Authorize( AuthenticationSchemes = JwtBearerAuthentication.AuthenticationScheme)]
     public class RestaurantController : Controller
     {
-        /*readonly RestaurantGateway restaurantGateway;
+        readonly RestaurantGateway _restaurantGateway;
 
         public RestaurantController(RestaurantGateway restaurantGateway)
         {
@@ -39,7 +39,7 @@ namespace DealEat.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateRestaurant([FromBody] RestaurantViewModel model)
         {
-            Result<int> result = await _restaurantGateway.Create( METTRE LES MODELS ex : model.Name);
+            Result<int> result = await _restaurantGateway.Create( model.RestaurantId, model.Name, model.Adresse, model.PhotoLink, model.Telephone, model.UserId );
             return this.CreateResult(result, o =>
             {
                 o.RouteName = "GetRestaurant";
@@ -52,6 +52,6 @@ namespace DealEat.WebApp.Controllers
         {
             Result result = await _restaurantGateway.Delete(id);
             return this.CreateResult(result);
-        }*/
+        }
     }
 }
