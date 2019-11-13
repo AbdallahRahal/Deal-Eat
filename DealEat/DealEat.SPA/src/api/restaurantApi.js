@@ -16,6 +16,6 @@ export async function createRestaurantAsync(model) {
     return await postAsync(endpoint, model);
 }
 
-export async function deleteRestaurantAsync(restaurantId) {
+/*export async function deleteRestaurantAsync(restaurantId) {
     return await deleteAsync(`${endpoint}/${restaurantId}`);
-}
+}*/
