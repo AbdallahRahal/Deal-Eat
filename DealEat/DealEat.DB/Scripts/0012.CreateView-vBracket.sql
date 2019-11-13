@@ -4,10 +4,10 @@ as
 		-- Bracket
 		BracketId = b.BracketId,
 		[Name] = b.[Name],
-		[Type] = b.[Type],
 		PhotoLink = b.PhotoLink,
 		-- Sold
 		SoldId = s.SoldId,
 		Reduction = s.Reduction
 	from dealeat.tBracket b
-	left join dealeat.tSold s on tBracket.BracketId = tSold.BracketId
+	--left join bracket & sold
+	left join dealeat.tSold s on b.BracketId = s.BracketId

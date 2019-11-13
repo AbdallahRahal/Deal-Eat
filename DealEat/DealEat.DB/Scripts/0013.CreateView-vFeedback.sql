@@ -9,4 +9,5 @@ as
 		Note = f.Note,
 		Feedback = f.Feedback
 	from dealeat.tUser u
-	left join dealeat.tFeedback f on tUser.UserId = tFeedback.UserId
+	--left join user & feedback
+	left join dealeat.tFeedback f on u.UserId = f.UserId

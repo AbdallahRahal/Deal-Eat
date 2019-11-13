@@ -15,7 +15,6 @@ begin
 		return 1;
 	end;
 
-	update dealeat.tUser set FeedbackId = 0 where FeedbackId = @FeedbackId;
 	delete dealeat.tFeedback where FeedbackId = @FeedbackId;
 	commit;
 
