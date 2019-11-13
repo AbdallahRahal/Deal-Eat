@@ -1,0 +1,1 @@
+insert into dealeat.tUser(Pseudo, [Password], [Name], LastName) values('UserPseudo1', 'UserPassword1', 'UserName1', 'UserLastName1');

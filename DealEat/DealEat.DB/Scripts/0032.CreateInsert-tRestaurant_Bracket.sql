@@ -1,0 +1,1 @@
+insert into dealeat.tRestaurant_Bracket(RestaurantId, BracketId) values(0, 0);

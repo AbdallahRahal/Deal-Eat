@@ -1,0 +1,2 @@
+insert into dealeat.tRestaurant([Name], Adresse, PhotoLink, Telephone, UserId) values('RestaurantName1', 'RestaurantAdresse1', 'RestaurantPhotoLink1', 0601020304, 0)
+insert into dealeat.tRestaurant([Name], Adresse, PhotoLink, Telephone, UserId) values('RestaurantName2', 'RestaurantAdresse2', 'RestaurantPhotoLink2', 0604030201, 0);;
