@@ -1,1 +1,1 @@
-insert into dealeat.tRestaurant_Category(RestaurantId, CategoryId) values(0, 0);
+insert into dealeat.tRestaurant_Category(RestaurantId, CategoryId)  values(0, 0);
