@@ -1,0 +1,1 @@
+insert into dealeat.tCategory([Name]) values('Africain');

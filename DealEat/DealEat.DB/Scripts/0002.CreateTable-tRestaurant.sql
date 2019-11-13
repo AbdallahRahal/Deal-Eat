@@ -10,4 +10,3 @@ create table dealeat.tRestaurant
 	constraint PK_dealeat_tRestaurant primary key(RestaurantId),
 	constraint FK_dealeat_tRestaurant_tUser foreign key(UserId) references dealeat.tUser(UserId)
 );
---insert into dealeat.tRestaurant([Name], Adresse, PhotoLink, Telephone, UserId) values('RestaurantName', 'RestaurantAdresse', 'RestaurantPhotoLink', 0601020304, 0);
