@@ -1826,23 +1826,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\samia\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\Abdel\\.nuget\\packages\\": {},
+>>>>>>> 70d4f0878d71c0bda97d1f0ea96d09d519c14660
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\samia\\OneDrive\\Bureau\\PI_S4\\Deal-Eat\\DealEat\\DealEat.DAL\\DealEat.DAL.csproj",
       "projectName": "DealEat.DAL",
       "projectPath": "C:\\Users\\samia\\OneDrive\\Bureau\\PI_S4\\Deal-Eat\\DealEat\\DealEat.DAL\\DealEat.DAL.csproj",
       "packagesPath": "C:\\Users\\samia\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\samia\\OneDrive\\Bureau\\PI_S4\\Deal-Eat\\DealEat\\DealEat.DAL\\obj\\",
+=======
+      "projectUniqueName": "C:\\S4\\Deal-Eat\\DealEat\\DealEat.DAL\\DealEat.DAL.csproj",
+      "projectName": "DealEat.DAL",
+      "projectPath": "C:\\S4\\Deal-Eat\\DealEat\\DealEat.DAL\\DealEat.DAL.csproj",
+      "packagesPath": "C:\\Users\\Abdel\\.nuget\\packages\\",
+      "outputPath": "C:\\S4\\Deal-Eat\\DealEat\\DealEat.DAL\\obj\\",
+>>>>>>> 70d4f0878d71c0bda97d1f0ea96d09d519c14660
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\samia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\Abdel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 70d4f0878d71c0bda97d1f0ea96d09d519c14660
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

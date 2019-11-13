@@ -34,16 +34,21 @@ namespace DealEat.WebApp
             services.AddOptions();
 
             services.AddMvc();
-            //services.AddSingleton(_ => new UserGateway(Configuration["ConnectionStrings:PrimarySchoolDB"]));
+            services.AddSingleton(_ => new UserGateway(Configuration["ConnectionStrings:DealEatDB"]));
             services.AddSingleton<PasswordHasher>();
             services.AddSingleton<UserService>();
             services.AddSingleton<TokenService>();
             services.AddSingleton<GoogleAuthenticationManager>();
 
-           
 
+
+            services.Configure<SpaOptions>(o =>
+            {
+                o.Host = Configuration["Spa:Host"];
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +62,13 @@ namespace DealEat.WebApp
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseCors(c =>
+            {
+                c.AllowAnyHeader();
+                c.AllowAnyMethod();
+                c.AllowCredentials();
+                c.WithOrigins(Configuration["Spa:Host"]);
+            });
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
