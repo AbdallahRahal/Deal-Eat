@@ -12,7 +12,6 @@ using DealEat.DAL;
 namespace DealEat.WebApp.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize( AuthenticationSchemes = JwtBearerAuthentication.AuthenticationScheme)]
     public class RestaurantController : Controller
     {
         readonly RestaurantGateway _restaurantGateway;

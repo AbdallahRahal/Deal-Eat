@@ -34,7 +34,7 @@ namespace DealEat.WebApp
             services.AddOptions();
 
             services.AddMvc();
-            services.AddSingleton(_ => new UserGateway(Configuration["ConnectionStrings:DealEatDB"]));
+            services.AddSingleton(_ => new RestaurantGateway(Configuration["ConnectionStrings:DealEatDB"]));
             services.AddSingleton<PasswordHasher>();
             services.AddSingleton<UserService>();
             services.AddSingleton<TokenService>();
@@ -67,7 +67,7 @@ namespace DealEat.WebApp
                 c.AllowAnyHeader();
                 c.AllowAnyMethod();
                 c.AllowCredentials();
-               // c.WithOrigins(Configuration["Spa:Host"]);
+                c.WithOrigins(Configuration["Spa:Host"]);
             });
             app.UseStaticFiles();
 
