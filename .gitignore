@@ -260,3 +260,4 @@ DealEat/DealEat.WebApp/wwwroot/assets/
 DealEat/DealEat.WebApp/wwwroot/dist/
 DealEat/DealEat.WebApp/appsettings.json
 DealEat/DealEat.DB/appsettings.json
+DealEat/DealEat.DAL/appsettings.json
