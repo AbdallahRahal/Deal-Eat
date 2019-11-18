@@ -13,13 +13,15 @@
     </tr>
   </thead>
   <tbody>
-      <!--<tr v-if="restaurantList.length == 0">
-                    <td colspan="4" class="text-center">Il n'y a actuellement aucun restaurant.</td>
-                </tr>-->
 
     <tr class="table-dark" v-for="i of restaurantList">
-      <th scope="row">{{ i.UserId }}</th>
-      <td>{{ i.Name }}</td>
+      <th scope="row">{{ i.userId }}</th>
+      <td>{{ i.restaurantId }}</td>
+      <td>{{ i.name }}</td>
+      <td>{{ i.adresse }}</td>
+      <td>{{ i.photoLink }}</td>
+      <td>{{ i.telephone }}</td>
+
     </tr>
   </tbody>
 </table> 

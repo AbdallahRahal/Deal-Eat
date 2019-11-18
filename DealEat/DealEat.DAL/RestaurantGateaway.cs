@@ -33,15 +33,15 @@ namespace DealEat.DAL
                 return Result.Success(restaurant);
             }
         }
-        public async Task<Result<RestaurantData>> GetAll()
+        public async Task<Result<IEnumerable<RestaurantData>>> GetAll()
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                RestaurantData listRestaurant = await con.QueryFirstOrDefaultAsync<RestaurantData>(
+                IEnumerable<RestaurantData> listRestaurant = await con.QueryAsync<RestaurantData> (
                     @"select r.UserId, r.RestaurantId, r.Name, r.Adresse, r.Photolink, r.Telephone
                     from dealeat.vRestaurant as r ");
 
-                if (listRestaurant == null) return Result.Failure<RestaurantData>(Status.NotFound, "User not found.");
+                if (listRestaurant == null) return Result.Failure<IEnumerable<RestaurantData>>(Status.NotFound, "User not found.");
                 return Result.Success(listRestaurant);
             }
         }
