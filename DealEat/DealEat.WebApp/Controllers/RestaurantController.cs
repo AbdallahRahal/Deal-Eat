@@ -25,7 +25,7 @@ namespace DealEat.WebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetRestaurantList()
         {
-            Result<IEnumerable<RestaurantData>> result = await _restaurantGateway.GetAll();
+           IEnumerable<RestaurantData> result = await _restaurantGateway.GetAll();
             return Ok(result);
         }
 
