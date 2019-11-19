@@ -1,1 +1,1 @@
-insert into dealeat.tCategory([Name]) values('Africain') ;
+insert into dealeat.tCategory([Name]) values('Africain');

@@ -4,11 +4,10 @@ create table dealeat.tFeedback
 	Note int,
 	Feedback nvarchar(255) collate Latin1_General_100_CI_AS not null,
 	[Date] date,
-	UserId  int not null,
+	CustomerId  int not null,
 	RestaurantId int not null,
 
 	constraint PK_dealeat_tFeedback primary key(FeedbackId),
 	constraint FK_dealeat_tFeedback_tRestaurant foreign key(RestaurantId) references dealeat.tRestaurant(RestaurantId),
-	constraint FK_dealeat_tFeedback_tUser foreign key(UserId) references dealeat.tUser(UserId)
+	constraint FK_dealeat_tFeedback_tCustomer foreign key(CustomerId) references dealeat.tCustomer(CustomerId)
 );
---insert into dealeat.tFeedback(Note, Feedback, UserId, RestaurantId) values(5, 'Feedback', 0, 0);

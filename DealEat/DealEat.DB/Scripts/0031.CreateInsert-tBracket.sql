@@ -1,1 +1,1 @@
-insert into dealeat.tBracket([Name], PhotoLink, Information)  values('BracketName1', 'BracketPhotoLink1', 'BracketInformation1');
+insert into dealeat.tBracket([Name], PhotoLink, Information) values('BracketName1', 'BracketPhotoLink1', 'BracketInformation1');
