@@ -6,7 +6,7 @@ create table dealeat.tUser
 	[Name] nvarchar(45) collate Latin1_General_100_CI_AS not null,
 	LastName nvarchar(45) collate Latin1_General_100_CI_AS not null,
 	Email nvarchar(255) collate Latin1_General_100_CI_AS,
-	Telephone int collate Latin1_General_100_CI_AS
+	Telephone int
 
 	constraint PK_tUser primary key(UserId)
 );
