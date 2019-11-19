@@ -4,7 +4,7 @@ create proc dealeat.sRestaurantCreate
 	@Adresse nvarchar(45),
 	@PhotoLink nvarchar(45),
 	@Telephone int,
-	@UserId int,
+	@MerchantId int,
 	@RestaurantId int out
 )
 as

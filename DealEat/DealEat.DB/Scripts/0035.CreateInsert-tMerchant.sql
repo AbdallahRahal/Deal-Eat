@@ -1,0 +1,1 @@
+insert into dealeat.tMerchant(MerchantId) values(0);
