@@ -1,0 +1,1 @@
+insert into dealeat.tAdmin(AdminId) values(1);
