@@ -1,1 +1,1 @@
-insert into dealeat.tSold(Reduction, BracketId) values(50, 0) ;
+insert into dealeat.tSold(Reduction, BracketId) values(50, 0);
