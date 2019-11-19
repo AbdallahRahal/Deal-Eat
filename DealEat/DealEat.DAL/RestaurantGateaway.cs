@@ -33,7 +33,7 @@ namespace DealEat.DAL
                 return Result.Success(restaurant);
             }
         }
-        public async Task<Result<IEnumerable<RestaurantData>>> GetAll()
+        public async Task<IEnumerable<RestaurantData>> GetAll()
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
@@ -41,8 +41,7 @@ namespace DealEat.DAL
                     @"select r.UserId, r.RestaurantId, r.Name, r.Adresse, r.Photolink, r.Telephone
                     from dealeat.vRestaurant as r ");
 
-                if (listRestaurant == null) return Result.Failure<IEnumerable<RestaurantData>>(Status.NotFound, "User not found.");
-                return Result.Success(listRestaurant);
+                return listRestaurant;
             }
         }
 

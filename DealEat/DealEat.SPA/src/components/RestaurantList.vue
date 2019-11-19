@@ -1,30 +1,14 @@
 <template>
         <div id="listRestaurant" class="container">
             <h1>Liste des restaurants</h1>
-            <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">User Id</th>
-      <th scope="col">Restaurant Id</th>
-      <th scope="col">Name</th>
-      <th scope="col">Adresse</th>
-      <th scope="col">Photolink</th>
-      <th scope="col">Telephone</th>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr class="table-dark" v-for="i of restaurantList">
-      <th scope="row">{{ i.userId }}</th>
-      <td>{{ i.restaurantId }}</td>
-      <td>{{ i.name }}</td>
-      <td>{{ i.adresse }}</td>
-      <td>{{ i.photoLink }}</td>
-      <td>{{ i.telephone }}</td>
-
-    </tr>
-  </tbody>
-</table> 
+<div class="card text-white bg-success mb-3" style="max-width: 30%;display:inline-block" v-for="item in restaurantList">
+  <div class="card-header">{{ item.name }}</div>
+  <div class="card-body">
+    <h4 class="card-title">{{ item.photoLink }}</h4>
+    <p class="card-text">{{ item.adresse }}</p>
+    <p class="card-text">{{ item.telephone }}</p>
+  </div>
+</div>
            
         </div>
 </template>
@@ -48,6 +32,7 @@
             async refreshList() {
                 try {
                     this.restaurantList = await getRestaurantListAsync();
+                    
                 }
                 catch(e) {
                     console.error(e);
