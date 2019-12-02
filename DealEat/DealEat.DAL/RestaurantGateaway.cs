@@ -38,8 +38,8 @@ namespace DealEat.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 IEnumerable<RestaurantData> listRestaurant = await con.QueryAsync<RestaurantData> (
-                    @"select r.UserId, r.RestaurantId, r.Name, r.Adresse, r.Photolink, r.Telephone
-                    from dealeat.vRestaurant as r ");
+                    @"select r.RestaurantId, r.Name, r.Adresse, r.Photolink, r.Telephone
+                    from dealeat.tRestaurant as r ");
 
                 return listRestaurant;
             }
