@@ -1,0 +1,26 @@
+@{
+    string location = ( string )ViewData[ "SpaHost" ];
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Signed out</title>
+</head>
+<body>
+    <script>
+        (function () {
+            var origin = window.opener || window.parent;
+            var isPopup = origin == window.opener;
+
+            origin.postMessage({
+                type: 'signedOut'
+            }, '@location');
+
+            if (isPopup) window.close();
+        })();
+    </script>
+</body>
+</html>

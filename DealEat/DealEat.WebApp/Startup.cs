@@ -35,6 +35,7 @@ namespace DealEat.WebApp
 
             services.AddMvc();
             services.AddSingleton(_ => new RestaurantGateway(Configuration["ConnectionStrings:DealEatDB"]));
+            services.AddSingleton(_ => new UserGateway(Configuration["ConnectionStrings:DealEatDB"]));
             services.AddSingleton<PasswordHasher>();
             services.AddSingleton<UserService>();
             services.AddSingleton<TokenService>();
@@ -47,6 +48,12 @@ namespace DealEat.WebApp
                 o.Host = Configuration["Spa:Host"];
             });
 
+            services.AddAuthentication(CookieAuthentication.AuthenticationScheme)
+                .AddCookie(CookieAuthentication.AuthenticationScheme, o =>
+                {
+                    o.ExpireTimeSpan = TimeSpan.FromHours(1);
+                    o.SlidingExpiration = true;
+                });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             
         }
