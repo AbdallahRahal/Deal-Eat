@@ -1,7 +1,7 @@
 create proc dealeat.sUserCreate
 (
 	@Pseudo nvarchar(45),
-	@Password nvarchar(45),
+	@Password nvarchar(255),
 	@Name nvarchar(45),
 	@LastName nvarchar(45),
 	@Email nvarchar(255),
@@ -15,7 +15,7 @@ begin
 
 	begin tran;
 
-	if exists(select * from dealeat.tUser u where u.Pseudo = @Pseudo and u.[Password] = @Password and u.[Name] = @Name and u.LastName = @LastName and u.Email = @Email and u.Telephone = @Telephone)
+	if exists(select * from dealeat.tUser where Pseudo = @Pseudo or Email = @Email)
 	begin
 		rollback;
 		return 1;
@@ -24,6 +24,6 @@ begin
 	insert into dealeat.tUser( Pseudo, [Password], [Name], LastName, Email, Telephone) values(@Pseudo, @Password, @Name, @LastName, @Email, @Telephone);
 	set @UserId = scope_identity();
 
-	commit;
+	commit;	
 	return 0;
 end;

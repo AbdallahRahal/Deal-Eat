@@ -54,9 +54,11 @@ class AuthService {
     }
 
     login(selectedProvider) {
+        console.log(selectedProvider);
+        console.log(this.providers);
         var provider = this.providers[selectedProvider];
 
-        var popup = window.open(provider.endpoint, "Connexion à ITI.PrimarySchool", "menubar=no, status=no, scrollbars=no, menubar=no, width=700, height=700");
+        var popup = window.open(provider.endpoint, "Connexion à DealEat", "menubar=no, status=no, scrollbars=no, menubar=no, width=700, height=700");
     }
 
     registerAuthenticatedCallback(cb) {
