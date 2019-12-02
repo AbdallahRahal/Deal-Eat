@@ -17,11 +17,11 @@ as
 		FeedbackId = f.FeedbackId,
 		Note = f.Note,
 		Feedback = f.Feedback
-	from dealeat.tUser u
-	--left join user & merchant
-	left join dealeat.tMerchant m on u.UserId = m.MerchantId
-	--left join merchant & restaurant
-	left join dealeat.tRestaurant r on m.MerchantId = r.MerchantId
+	from dealeat.tRestaurant r
+	--left join restaurant & merchant 
+	left join dealeat.tMerchant m  on m.MerchantId = r.MerchantId
+	--left join merchant & user 
+	left join dealeat.tUser u on u.UserId = m.MerchantId
 	--left join feedback & restaurant
 	left join dealeat.tFeedback f on r.RestaurantId = f.RestaurantId
 	--left join restaurant & category
