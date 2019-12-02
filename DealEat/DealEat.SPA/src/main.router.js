@@ -11,6 +11,7 @@ import Login from './components/Login.vue'
 import Logout from './components/Logout.vue'
 import Restaurant from './components/NewRestaurant.vue'
 import RestaurantList from './components/RestaurantList'
+import ReducList from './components/ReducList'
 
 //import User from './components/User.vue'
 
@@ -20,6 +21,7 @@ const routes = [
     { path: '/login', component: Login },
     { path: '/restaurant', component: Restaurant },
     { path: '/restaurantList', component: RestaurantList },
+    { path: '/reducList', component: ReducList },
     /*{ path: '/', component: Home },
     //{ path: '/logout', component: Logout, beforeEnter: requireAuth },
 

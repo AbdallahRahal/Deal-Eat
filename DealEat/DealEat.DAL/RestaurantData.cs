@@ -6,11 +6,7 @@ namespace DealEat.DAL
 {
     public class RestaurantData
     {
-        // Data on View : dealeat.vRestaurant
-
-
-        // User
-        public int UserId { get; set; }
+        // Data on View : dealeat.vRestaurant 
         
         // Restaurant
         public int RestaurantId { get; set; }
