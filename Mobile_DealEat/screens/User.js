@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet } from 'react-native';
 
-class Favorites extends Component {
+class User extends Component {
     render() {
         return(
             <View style={styles.container} >
-                <Text>Page Favorites</Text>
+                <Text>Page User</Text>
             </View>
         );
     }
@@ -13,7 +13,7 @@ class Favorites extends Component {
 
 
 
-export default Favorites;
+export default User;
 
 
 const styles = StyleSheet.create({

@@ -5,24 +5,16 @@ import { createBottomTabNavigator } from 'react-navigation';
 
 // Navigation by the bottom_tab_bar
 import Search from './screens/Search';
-import Favorites from './screens/Favorites';
+import User from './screens/User';
 import Reduction from './screens/Reduction';
 import Restaurant from './screens/Restaurant';
 
 // Icons - For bottom_tab_bar
 import Icon from 'react-native-vector-icons/Ionicons';
+import Icon2 from 'react-native-vector-icons/Feather';
 
 
-class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Test</Text>
 
-      </View>
-    );
-  }
-}
 
 export default createBottomTabNavigator({
   Search: {
@@ -59,11 +51,11 @@ export default createBottomTabNavigator({
   },
 
   Favorites: {
-    screen: Favorites,
+    screen: User,
     navigationOptions: {
-      tabBarLabel: 'FAVORIS',
+      tabBarLabel: 'USER',
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="ios-heart-empty" color={tintColor} size={25} />
+        <Icon2 name="user" color={tintColor} size={25} />
       )
     }
   }
