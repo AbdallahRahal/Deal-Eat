@@ -43,8 +43,8 @@ export default createBottomTabNavigator({
     navigationOptions: {
       tabBarLabel: 'RESTAURANTS',
       tabBarIcon: ({ tintColor }) => (
-        <Image source={require('./assets/restaurantsLogo.png')} 
-          style={ {height:25, width: 25, tintColor: tintColor } }
+        <Image source={require('./assets/restaurantsLogo.png')}
+          style={{ height: 25, width: 25, tintColor: tintColor }}
         />
       )
     }
@@ -62,19 +62,26 @@ export default createBottomTabNavigator({
 
 },
 {
+  // BottomTabNavigatorConfig :
+  // -The routeName for the initial tab route when first loading.
+  initialRouteName: 'Reduction',
+
+  // -Style
   tabBarOptions: {
     activeTintColor: 'red',
     inactiveTintColor: 'grey',
     style: {
       backgroundColor: 'white',
       borderTopWidth: 0,
-      shadowOffSet: {width:6, height: 4},
+      shadowOffSet: { width: 6, height: 4 },
       shadowColor: 'black',
       shadowOpacity: 0.6,
       elevation: 5
     }
-  }
+  },
+
 }
+
 )
 
 const styles = StyleSheet.create({
