@@ -13,9 +13,10 @@ import Icon from "react-native-vector-icons/Ionicons";
 class Search extends Component {
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor:"#13a34c" }}>
         <View style={styles.container}>
-          <View style={styles.containerSearchBar}>
+
+          <View style={styles.containerSearchBar}>         
             <View style={styles.searchBar}>
               <Icon name="ios-search" size={21} style={{ marginRight: 10 }} />
               <TextInput
@@ -27,8 +28,10 @@ class Search extends Component {
             </View>
           </View>
 
-          <Text style={styles.message}>Page Search</Text>
+          <Text>Page Search</Text>
+
         </View>
+
       </SafeAreaView>
     );
   }
@@ -39,12 +42,13 @@ export default Search;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#13a34c"
+    //backgroundColor: "#13a34c",
+    backgroundColor: "white"
   },
 
   containerSearchBar: {
     height: 80,
-    backgroundColor: "white",
+    backgroundColor: "#13a34c",
     borderColor: "grey",
     borderBottomWidth: 1
   },
@@ -64,15 +68,8 @@ const styles = StyleSheet.create({
   },
 
   inputSearchBar: {
-    //flex: 1,
     fontWeight: "700",
   },
 
-  message: {
-    flex: 1,
-    flexDirection: 'column-reverse',
-    alignContent: 'flex-end',
-    alignItems: "flex-end",
-    justifyContent: "flex-end"
-  }
+
 });

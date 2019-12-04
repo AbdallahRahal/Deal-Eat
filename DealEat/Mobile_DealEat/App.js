@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 import { createBottomTabNavigator } from 'react-navigation';
+import Colors from './constants/Colors';
 
 // Navigation by the bottom_tab_bar
 import Search from './screens/Search';
@@ -69,9 +70,9 @@ export default createBottomTabNavigator({
   // -Style
   tabBarOptions: {
     activeTintColor: 'red',
-    inactiveTintColor: 'grey',
+    inactiveTintColor: 'white',
     style: {
-      backgroundColor: 'white',
+      backgroundColor: Colors.primaryGreen,
       borderTopWidth: 0,
       shadowOffSet: { width: 6, height: 4 },
       shadowColor: 'black',
@@ -87,7 +88,7 @@ export default createBottomTabNavigator({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#13a34c',
+    backgroundColor: Colors.primaryGreen,
     alignItems: 'center',
     justifyContent: 'center',
   },
