@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet } from 'react-native';
 
-class Reduction extends Component {
+class ReductionScreen extends Component {
     render() {
         return(
             <View style={styles.container} >
@@ -13,7 +13,7 @@ class Reduction extends Component {
 
 
 
-export default Reduction;
+export default ReductionScreen;
 
 
 const styles = StyleSheet.create({

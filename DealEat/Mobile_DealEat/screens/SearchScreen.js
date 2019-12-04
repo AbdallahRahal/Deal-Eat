@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
-class Search extends Component {
+class SearchScreen extends Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor:"#13a34c" }}>
@@ -37,7 +37,7 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default SearchScreen;
 
 const styles = StyleSheet.create({
   container: {

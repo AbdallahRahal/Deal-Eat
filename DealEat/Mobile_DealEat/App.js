@@ -5,10 +5,10 @@ import { createBottomTabNavigator } from 'react-navigation';
 import Colors from './constants/Colors';
 
 // Navigation by the bottom_tab_bar
-import Search from './screens/Search';
-import User from './screens/User';
-import Reduction from './screens/Reduction';
-import Restaurant from './screens/Restaurant';
+import SearchScreen from './screens/SearchScreen';
+import UserScreen from './screens/UserScreen';
+import ReductionScreen from './screens/ReductionScreen';
+import RestaurantScreen from './screens/RestaurantScreen';
 
 // Icons - For bottom_tab_bar
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -19,7 +19,7 @@ import Icon2 from 'react-native-vector-icons/Feather';
 
 export default createBottomTabNavigator({
   Search: {
-    screen: Search,
+    screen: SearchScreen,
     navigationOptions: {
       tabBarLabel: 'RECHERCHE',
       tabBarIcon: ({ tintColor }) => (
@@ -30,7 +30,7 @@ export default createBottomTabNavigator({
 
 
   Reduction: {
-    screen: Reduction,
+    screen: ReductionScreen,
     navigationOptions: {
       tabBarLabel: 'RÉDUCTIONS',
       tabBarIcon: ({ tintColor }) => (
@@ -40,7 +40,7 @@ export default createBottomTabNavigator({
   },
 
   Restaurant: {
-    screen: Restaurant,
+    screen: RestaurantScreen,
     navigationOptions: {
       tabBarLabel: 'RESTAURANTS',
       tabBarIcon: ({ tintColor }) => (
@@ -52,7 +52,7 @@ export default createBottomTabNavigator({
   },
 
   Favorites: {
-    screen: User,
+    screen: UserScreen,
     navigationOptions: {
       tabBarLabel: 'USER',
       tabBarIcon: ({ tintColor }) => (

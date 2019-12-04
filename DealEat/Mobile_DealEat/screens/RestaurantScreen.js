@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import Colors from '../constants/Colors';
 
-class Restaurant extends Component {
+class RestaurantScreen extends Component {
     render() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.primaryGreen }} >
@@ -31,7 +31,7 @@ class Restaurant extends Component {
 
 
 
-export default Restaurant;
+export default RestaurantScreen;
 
 
 const styles = StyleSheet.create({

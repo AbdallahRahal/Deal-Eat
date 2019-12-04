@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import Colors from '../constants/Colors';
 
-class User extends Component {
+class UserScreen extends Component {
     render() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.primaryGreen }} >
@@ -31,7 +31,7 @@ class User extends Component {
 
 
 
-export default User;
+export default UserScreen;
 
 
 const styles = StyleSheet.create({
