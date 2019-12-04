@@ -30,17 +30,17 @@ namespace DealEat.DAL
                 if (reduction == null) return Result.Failure<ReductionData>(Status.NotFound, "User not found.");
                 return Result.Success(reduction);
             }
-        }
+        }*/
         public async Task<IEnumerable<ReductionData>> GetAll()
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 IEnumerable<ReductionData> listReduction = await con.QueryAsync<ReductionData> (
-                    REQUETE SQL);
+                    @"select * from dealeat.vBracket");
 
                 return listReduction;
             }
-        }*/
+        }
 
 
 

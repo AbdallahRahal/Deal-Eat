@@ -9,9 +9,8 @@ Vue.use(VueRouter);
 import Home from './components/Home.vue'
 import Login from './components/Login.vue'
 import Logout from './components/Logout.vue'
-import Restaurant from './components/NewRestaurant.vue'
-import RestaurantList from './components/RestaurantList'
-import ReducList from './components/ReducList'
+import RestaurantList from './components/RestaurantList.vue'
+import ReductionList from './components/ReductionList.vue'
 
 //import User from './components/User.vue'
 
@@ -19,9 +18,8 @@ const routes = [
     { path: '/home', component: Home },
     { path: '', component: Home },
     { path: '/login', component: Login },
-    { path: '/restaurant', component: Restaurant },
     { path: '/restaurantList', component: RestaurantList },
-    { path: '/reducList', component: ReducList },
+    { path: '/reductionList', component: ReductionList },
     /*{ path: '/', component: Home },
     //{ path: '/logout', component: Logout, beforeEnter: requireAuth },
 

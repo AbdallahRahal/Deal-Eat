@@ -1,16 +1,16 @@
 <template>
-        <div id="listRestaurant" class="container">
+        <div id="listReduction" class="container">
             
                         <a href="javascript:history.back()">
                             <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-arrow-circle-left"></i></button>
                         </a>
-            <h1>Liste des restaurants</h1>
-<div class="card text-white bg-success mb-3" style="max-width: 30%;display:inline-block; margin:1%;" v-for="item in restaurantList">
+            <h1>Liste des réductions</h1>
+<div class="card text-white bg-success mb-3" style="max-width: 30%;display:inline-block; margin:1%;" v-for="item in reductionList">
   <div class="card-header">{{ item.name }}</div>
   <div class="card-body">
     <h4 class="card-title">{{ item.photoLink }}</h4>
-    <p class="card-text">{{ item.adresse }}</p>
-    <p class="card-text">{{ item.telephone }}</p>
+    <p class="card-text">{{ item.reduction }}</p>
+    <p class="card-text">{{ item.bracketId }}</p>
   </div>
 </div>
            
@@ -18,12 +18,12 @@
 </template>
 
 <script>
- import { getRestaurantListAsync } from '../api/restaurantApi'
+ import { getReductionListAsync } from '../api/reductionApi'
 
     export default {
         data() {
             return {
-                restaurantList: [],
+                reductionList: []
             }
         },
 
@@ -35,7 +35,7 @@
         methods: {
             async refreshList() {
                 try {
-                    this.restaurantList = await getRestaurantListAsync();
+                    this.reductionList = await getReductionListAsync();
                     
                 }
                 catch(e) {
