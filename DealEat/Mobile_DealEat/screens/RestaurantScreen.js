@@ -5,12 +5,18 @@ import {
     StyleSheet,
     ScrollView,
     SafeAreaView,
-    Image
+    Dimensions
 } from 'react-native';
 import Colors from '../constants/Colors';
 import Category from '../components/Restaurant/Category';
 
+import RestaurantPreview from '../components/Restaurant/RestaurantPreview';
+
+
+const { height, width } = Dimensions.get('window');
+
 class RestaurantScreen extends Component {
+
     render() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.primaryGreen }} >
@@ -24,7 +30,6 @@ class RestaurantScreen extends Component {
 
                     <View style={{ height: 130, marginTop: 10, }}>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
-
                             <Category name='Chez Marwan'
                                 imgUrl={require('../assets/Chez_Marwan.jpeg')}
                             />
@@ -37,10 +42,24 @@ class RestaurantScreen extends Component {
                             <Category name='Chez Marwan'
                                 imgUrl={require('../assets/Chez_Marwan.jpeg')}
                             />
-
-
                         </ScrollView>
                     </View>
+
+                    <View style={styles.line}></View>
+
+                    <ScrollView >
+                        <View>
+                            <Text style={styles.title} >Les restaurants autour de vous</Text>
+                        </View>
+
+                        <View style={{ marginTop: 20 }}>
+                            <View style={styles.containerRestaurantAround} >
+                                <RestaurantPreview />
+                                <RestaurantPreview />
+                                <RestaurantPreview />
+                            </View>
+                        </View>
+                    </ScrollView>
 
                 </View>
             </SafeAreaView>
@@ -68,18 +87,35 @@ const styles = StyleSheet.create({
     },
 
     title: {
+        paddingHorizontal: 5,
         fontSize: 24,
         fontWeight: '700',
-        margin: 10,
-        paddingHorizontal: 5,
         textAlign: "center",
     },
 
     subTitle: {
+        marginTop: 30,
+        marginLeft: 10,
         fontSize: 15,
         color: 'black',
         fontStyle: 'italic',
-        marginTop: 10
+    },
+
+    line: {
+        marginTop: 20,
+        marginBottom: 30,
+        marginHorizontal: 30,
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
+    },
+    containerRestaurantAround: {
+        borderWidth: 0.5,
+        paddingHorizontal: 20,
+        borderColor: Colors.littleGrey,
+        flex: 1,
+        flexDirection:'row',
+        flexWrap: "wrap",
+        justifyContent:'space-between'
     },
 
 });
