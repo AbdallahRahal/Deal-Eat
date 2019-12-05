@@ -15,30 +15,41 @@ import StarRating from 'react-native-star-rating';
 const { height, width } = Dimensions.get('window');
 
 class RestaurantPreview extends Component {
+    // 'Restaurant Preview class'
+    // Class who draw a card for see the informations of one restaurant :
+    /* properties :
+          picture => image of the restaurant
+          categories => (3max) exemple : Burger - Pizza - Fastfood;
+          nameRestaurant => Name of this restaurant
+          average => {0 - 5} Average note by the all user 
+          nbNotes => How many notes
+          distance => How many kilometer between the user position et the restaurant
+    */
+
     render() {
         return (
             <View style={styles.containerRestaurant}>
 
                 <View style={{ flex: 1 }}>
-                    <Image source={require('../../assets/Chez_Marwan.jpeg')}
+                    <Image source={this.props.picture}
                         style={{ flex: 1, height: null, width: null, resizeMode: 'cover' }} />
                 </View>
 
                 <View style={styles.containerRestaurantText}>
                     <View>
-                        <Text style={styles.subCategoriesFoods}>Pizza - Burger - Fastfood</Text>
-                        <Text style={styles.subName} >Chez Marwan</Text>
+                        <Text style={styles.subCategoriesFoods}>{this.props.categories}</Text>
+                        <Text style={styles.subName} >{this.props.nameRestaurant}</Text>
                     </View>
 
                     <View style={{ flex: 1, flexDirection: 'row', paddingHorizontal: 5, width: (width / 2) - 30 }}>
-                        <View style={{ flexDirection: 'column', alignSelf: 'flex-end'}}>
+                        <View style={{ flexDirection: 'column', alignSelf: 'flex-end' }}>
                             <StarRating
                                 disabled={true}
                                 maxStar={5}
                                 starSize={15}
-                                rating={4.4}
+                                rating={this.props.average}
                             />
-                            <Text style={styles.avis}>143 avis</Text>
+                            <Text style={styles.avis}>{this.props.nbNotes} avis</Text>
                         </View>
 
 
@@ -53,7 +64,7 @@ class RestaurantPreview extends Component {
                             <View style={{ flexDirection: 'row' }}>
                                 <Icon name='ios-walk' color='black' size={16} />
                                 <Icon2 name='dot-single' color='black' size={16} />
-                                <Text style={styles.subDistanceGPS} >0.4 km</Text>
+                                <Text style={styles.subDistanceGPS} >{this.props.distance} km</Text>
                             </View>
                         </View>
                     </View>
@@ -102,7 +113,7 @@ const styles = StyleSheet.create({
     avis: {
         color: '#1E90FF',
         fontSize: 13,
-        fontStyle:'italic'
+        fontStyle: 'italic'
     },
 
     subDistanceGPS: {
