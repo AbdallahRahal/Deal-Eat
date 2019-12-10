@@ -19,10 +19,11 @@ namespace DealEat.DAL
             _connectionString = connectionString;
         }
 
-        public async Task<Result<ReductionData>> FindById(int id)
+        /*public async Task<Result<ReductionData>> FindById(int id)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
+
                 ReductionData reduction = await con.QueryFirstAsync<ReductionData>(
                      "select * " +
                     "from dealeat.vReduc " +
@@ -32,7 +33,7 @@ namespace DealEat.DAL
                 if (reduction == null) return Result.Failure<ReductionData>(Status.NotFound, "User not found.");
                 return Result.Success(reduction);
             }
-        }
+        }*/
         public async Task<IEnumerable<ReductionData>> GetAll()
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
@@ -40,6 +41,7 @@ namespace DealEat.DAL
                 return await con.QueryAsync<ReductionData> (
                    "select * " +
                     "from dealeat.vReduc ");
+
 
                 
             }

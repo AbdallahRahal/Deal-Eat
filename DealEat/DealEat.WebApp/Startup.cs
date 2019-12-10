@@ -35,6 +35,7 @@ namespace DealEat.WebApp
 
             services.AddMvc();
             services.AddSingleton(_ => new RestaurantGateway(Configuration["ConnectionStrings:DealEatDB"]));
+            services.AddSingleton(_ => new ReductionGateway(Configuration["ConnectionStrings:DealEatDB"]));
             services.AddSingleton(_ => new UserGateway(Configuration["ConnectionStrings:DealEatDB"]));
             services.AddSingleton<PasswordHasher>();
             services.AddSingleton<UserService>();
