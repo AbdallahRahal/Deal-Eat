@@ -23,8 +23,10 @@ namespace DealEat.DAL
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                ReductionData reduction = await con.QueryFirstOrDefaultAsync<ReductionData>(
-                    /*REQUETE SQL*/,
+                ReductionData reduction = await con.QueryFirstAsync<ReductionData>(
+                     "select * " +
+                    "from dealeat.vReduc " +
+                    "where SoldId = @Id",
 
                     new { Id = id });
                 if (reduction == null) return Result.Failure<ReductionData>(Status.NotFound, "User not found.");
@@ -35,10 +37,11 @@ namespace DealEat.DAL
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                IEnumerable<ReductionData> listReduction = await con.QueryAsync<ReductionData> (
-                    /*REQUETE SQL*/);
+                return await con.QueryAsync<ReductionData> (
+                   "select * " +
+                    "from dealeat.vReduc ");
 
-                return listReduction;
+                
             }
         }
 

@@ -59,6 +59,7 @@ class AuthService {
         var provider = this.providers[selectedProvider];
 
         var popup = window.open(provider.endpoint, "Connexion à DealEat", "menubar=no, status=no, scrollbars=no, menubar=no, width=700, height=700");
+        
     }
 
     registerAuthenticatedCallback(cb) {

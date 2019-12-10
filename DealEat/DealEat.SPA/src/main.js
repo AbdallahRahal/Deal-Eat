@@ -8,7 +8,7 @@ import router from './main.router'
 Vue.config.productionTip = false
 
 const main = async() => {
-  //await AuthService.init();
+  await AuthService.init();
 
   new Vue({
     router,

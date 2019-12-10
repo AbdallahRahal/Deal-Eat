@@ -1,1 +1,0 @@
-insert into dealeat.tCustomer(CustomerId) values(2);

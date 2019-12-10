@@ -80,7 +80,7 @@ namespace DealEat.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 
-                return await con.QueryFirstAsync<UserData>(
+                return await con.QueryFirstOrDefaultAsync<UserData>(
                      "select UserId, Email, Name, LastName, Pseudo, [Password] " +
                     "from dealeat.tUser " +
                     "where Email = @Email",
