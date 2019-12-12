@@ -14,10 +14,45 @@ import RestaurantPreview from '../components/Restaurant/RestaurantPreview';
 
 
 const { height, width } = Dimensions.get('window');
+const urlApi = 'http://localhost:5000/api/Restaurant';
+var i = 0;
+
 
 class RestaurantScreen extends Component {
 
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isLoading: true,
+            data: null
+        }
+    }
+
+    componentDidMount() {
+        return fetch(urlApi)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({
+                    isLoading: false,
+                    data: responseJson
+                })
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+    }
+
     render() {
+        setTimeout(() => {
+            //console.log(this.state);
+            console.log(this.state.data[0]['name']);
+            console.log(i);
+            i++;
+
+        }, 2000);
+
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.primaryGreen }} >
 

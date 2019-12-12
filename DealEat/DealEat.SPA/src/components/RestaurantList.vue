@@ -8,9 +8,11 @@
 <div class="card text-white bg-success mb-3" style="max-width: 30%;display:inline-block; margin:1%;" v-for="item in restaurantList">
   <div class="card-header">{{ item.name }}</div>
   <div class="card-body">
-    <h4 class="card-title">{{ item.photoLink }}</h4>
+    <!--<h4 class="card-title">{{ item.photoLink }}</h4> -->
+    <!-- <img src= {{ item.photoLink }} > -->
+
     <p class="card-text">{{ item.adresse }}</p>
-    <p class="card-text">{{ item.telephone }}</p>
+    <p class="card-text">Tel: 0{{ item.telephone }}</p>
   </div>
 </div>
            
