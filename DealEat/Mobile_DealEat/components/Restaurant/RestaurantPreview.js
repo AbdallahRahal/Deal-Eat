@@ -4,13 +4,13 @@ import {
     Text,
     StyleSheet,
     Dimensions,
-    Image
-
+    Image,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/Entypo';
 import Colors from '../../constants/Colors';
 import StarRating from 'react-native-star-rating';
+
 
 const { height, width } = Dimensions.get('window');
 
@@ -25,6 +25,8 @@ class RestaurantPreview extends Component {
           nbNotes => How many notes
           distance => How many kilometer between the user position et the restaurant
     */
+
+
 
     render() {
         return (
