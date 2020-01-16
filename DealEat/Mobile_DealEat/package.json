@@ -20,5 +20,10 @@
   "devDependencies": {
     "babel-preset-expo": "^7.1.0"
   },
-  "private": true
+  "private": true,
+  "name": "mobile_dealeat",
+  "version": "1.0.0",
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
