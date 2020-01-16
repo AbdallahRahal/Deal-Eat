@@ -1,9 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import Colors from '../constants/Colors';
 
-class ReductionScreen extends Component {
-    render() {
+//class ReductionScreen extends Component {
+const ReductionScreen = props => {
+
+    const [data, setData] = useState();
+
+     
+
+    //render() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.primaryGreen }} >
 
@@ -13,7 +19,7 @@ class ReductionScreen extends Component {
                 
             </SafeAreaView>
         );
-    }
+    //}
 }
 
 

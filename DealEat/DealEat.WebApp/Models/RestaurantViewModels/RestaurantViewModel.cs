@@ -14,6 +14,6 @@ namespace DealEat.WebApp.Models
 
         public int Telephone { get; set; }
 
-        public int UserId { get; set; }
+        public string Category { get; set; }
     }
 }

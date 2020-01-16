@@ -5,65 +5,64 @@ import {
     StyleSheet,
     ScrollView,
     SafeAreaView,
-    Dimensions
+    Dimensions,
+    ActivityIndicator,
+    FlatList,
+    Image
 } from 'react-native';
 import Colors from '../constants/Colors';
 import Category from '../components/Restaurant/Category';
 
 import RestaurantPreview from '../components/Restaurant/RestaurantPreview';
+import GetRestaurantList from '../services/GetRestaurantList';
+//import GetRestaurantListFromApi from '../services/GetRestaurantList';
+const urlApi = 'http://localhost:5000/api/Restaurant';
 
 
 const { height, width } = Dimensions.get('window');
-const urlApi = 'http://localhost:5000/api/Restaurant';
-var i = 0;
-
 
 class RestaurantScreen extends Component {
 
 
-    constructor(props) {
-        super(props);
+    state = {
+        data: null,
+        isLoading: true
+    };
 
-        this.state = {
-            isLoading: true,
-            data: null
+    async componentDidMount() {
+        this.state.data = await GetRestaurantList();
+        this.state.isLoading = false;
+        console.log(this.state.data);
+        console.log('First Upload');
+        console.log(this.state.data[0]['name'])
+    };
+
+    async componentDidUpdate() {
+        this.setState = {
+            data: await GetRestaurantList()
         }
-    }
-
-    componentDidMount() {
-        return fetch(urlApi)
-            .then((response) => response.json())
-            .then((responseJson) => {
-                this.setState({
-                    isLoading: false,
-                    data: responseJson
-                })
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
+        console.log(this.state.data);
+        console.log("it's Update !");
+    };
 
     render() {
-        setTimeout(() => {
-            //console.log(this.state);
-            console.log(this.state.data[0]['name']);
-            console.log(i);
-            i++;
+        /*setTimeout(() => {
+            this.state.data = GetRestaurantList();
+            console.log(this.state);
+            //console.log(this.state.data[0]['name']);
+        }, 2000);*/
 
-        }, 2000);
 
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.primaryGreen }} >
 
-                <View style={styles.header}>
-                </View>
+
                 <ScrollView >
 
                     <View style={styles.container} >
                         <Text style={styles.title}>Dans quels restaurants {'\n'}allez-vous manger aujourd'hui ?</Text>
                         <Text style={styles.subTitle} >Les recommandations de l'équipe :</Text>
-
+                        <Text> {(this.state.data == null) ? null : this.state.data[0]['name']} </Text>
                         <View style={{ height: 130, marginTop: 10, }}>
                             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
                                 <Category name='Chez Marwan'
@@ -90,46 +89,26 @@ class RestaurantScreen extends Component {
                         <View style={{ marginTop: 20 }}>
                             <View style={styles.containerRestaurantAround} >
 
-                                <RestaurantPreview
-                                    picture={require('../assets/Chez_Marwan.jpeg')}
-                                    categories='Burger - Pizza - FastFood'
-                                    nameRestaurant='Chez Marwan'
-                                    average={4.3}
-                                    nbNotes={143}
-                                    distance={0.4}
+                                <FlatList
+                                    data={this.state.data}
+                                    contentContainerStyle={{
+                                        flexDirection: 'row',
+                                        flexWrap: "wrap",
+                                        justifyContent: 'space-between',
+                                    }}
+                                    renderItem={({ item }) =>
+                                        <RestaurantPreview
+                                            picture={item.photoLink}
+                                            categories= {item.category}
+                                            nameRestaurant={item.name}
+                                            average={4.3}
+                                            nbNotes={143}
+                                            distance={0.4}
+                                        />
+                                    }
+                                    keyExtractor={item => item.restaurantId}
                                 />
-                                <RestaurantPreview
-                                    picture={require('../assets/Thai.jpg')}
-                                    categories='Thai - FastFood'
-                                    nameRestaurant='Thaï'
-                                    average={2.7}
-                                    nbNotes={58}
-                                    distance={2.8}
-                                />
-                                <RestaurantPreview
-                                    picture={require('../assets/Paul.jpeg')}
-                                    categories='Boulangerie - Sandwich'
-                                    nameRestaurant='Chez Paul'
-                                    average={4.8}
-                                    nbNotes={243}
-                                    distance={0.8}
-                                />
-                                <RestaurantPreview
-                                    picture={require('../assets/Chez_Marwan.jpeg')}
-                                    categories='Burger - Pizza - FastFood'
-                                    nameRestaurant='Chez Marwan'
-                                    average={4.3}
-                                    nbNotes={143}
-                                    distance={0.4}
-                                />
-                                <RestaurantPreview
-                                    picture={require('../assets/Thai.jpg')}
-                                    categories='Thai - FastFood'
-                                    nameRestaurant='Thaï'
-                                    average={2.7}
-                                    nbNotes={58}
-                                    distance={2.8}
-                                />
+
                             </View>
                         </View>
 
@@ -193,3 +172,47 @@ const styles = StyleSheet.create({
     },
 
 });
+
+/*
+
+                                <RestaurantPreview
+                                    picture={require('../assets/Chez_Marwan.jpeg')}
+                                    categories='Burger - Pizza - FastFood'
+                                    nameRestaurant='Chez Marwan'
+                                    average={4.3}
+                                    nbNotes={143}
+                                    distance={0.4}
+                                />
+                                <RestaurantPreview
+                                    picture={require('../assets/Thai.jpg')}
+                                    categories='Thai - FastFood'
+                                    nameRestaurant='Thaï'
+                                    average={2.7}
+                                    nbNotes={58}
+                                    distance={2.8}
+                                />
+                                <RestaurantPreview
+                                    picture={require('../assets/Paul.jpeg')}
+                                    categories='Boulangerie - Sandwich'
+                                    nameRestaurant='Chez Paul'
+                                    average={4.8}
+                                    nbNotes={243}
+                                    distance={0.8}
+                                />
+                                <RestaurantPreview
+                                    picture={require('../assets/Chez_Marwan.jpeg')}
+                                    categories='Burger - Pizza - FastFood'
+                                    nameRestaurant='Chez Marwan'
+                                    average={4.3}
+                                    nbNotes={143}
+                                    distance={0.4}
+                                />
+                                <RestaurantPreview
+                                    picture={require('../assets/Thai.jpg')}
+                                    categories='Thai - FastFood'
+                                    nameRestaurant='Thaï'
+                                    average={2.7}
+                                    nbNotes={58}
+                                    distance={2.8}
+                                />
+                                */

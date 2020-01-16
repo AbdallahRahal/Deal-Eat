@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/Entypo';
 import Colors from '../../constants/Colors';
 import StarRating from 'react-native-star-rating';
+import GetRestaurantList from '../../services/GetRestaurantList';
 
 
 const { height, width } = Dimensions.get('window');
@@ -29,18 +30,21 @@ class RestaurantPreview extends Component {
 
 
     render() {
+            console.log();
+
         return (
             <View style={styles.containerRestaurant}>
 
                 <View style={{ flex: 1 }}>
-                    <Image source={this.props.picture}
+                    <Image source={{uri : this.props.picture}}
                         style={{ flex: 1, height: null, width: null, resizeMode: 'cover' }} />
                 </View>
 
                 <View style={styles.containerRestaurantText}>
                     <View>
-                        <Text style={styles.subCategoriesFoods}>{this.props.categories}</Text>
                         <Text style={styles.subName} >{this.props.nameRestaurant}</Text>
+                        <Text style={styles.subCategoriesFoods}>{this.props.categories}</Text>
+
                     </View>
 
                     <View style={{ flex: 1, flexDirection: 'row', paddingHorizontal: 5, width: (width / 2) - 30 }}>
@@ -102,6 +106,9 @@ const styles = StyleSheet.create({
         color: Colors.subTitleRed,
         fontSize: 12,
         fontStyle: 'italic',
+        //borderColor: 'red',
+        //borderWidth: 2,
+        paddingTop: 0
     },
 
     subName: {
@@ -110,6 +117,9 @@ const styles = StyleSheet.create({
         fontSize: 17,
         fontWeight: 'bold',
         flex: 0.7,
+        //borderColor: 'blue',
+        //borderWidth: 2,
+        marginBottom: -20
     },
 
     avis: {
