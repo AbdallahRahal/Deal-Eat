@@ -65,7 +65,7 @@ export default createBottomTabNavigator({
 {
   // BottomTabNavigatorConfig :
   // -The routeName for the initial tab route when first loading.
-  initialRouteName: 'Reduction',
+  initialRouteName: 'Restaurant',
 
   // -Style
   tabBarOptions: {

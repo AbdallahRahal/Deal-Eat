@@ -1,7 +1,7 @@
 create proc dealeat.sUserCreate
 (
 	@Pseudo nvarchar(45),
-	@Password nvarchar(255),
+	@Password varbinary(255),
 	@Name nvarchar(45),
 	@LastName nvarchar(45),
 	@Email nvarchar(255),

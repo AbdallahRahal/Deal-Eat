@@ -134,8 +134,8 @@ namespace DealEat.WebApp.Controllers
             string email = User.FindFirst(ClaimTypes.Email).Value;
             Token token = _tokenService.GenerateToken(userId, email);
             //IEnumerable<string> providers = await _userGateway.GetAuthenticationProviders(userId);
-            IEnumerable<string> test = new string[] {"Dealeat" };
-            IEnumerable<string> providers = test;
+   
+            IEnumerable<string> providers = new string[] {"Dealeat" };
             ViewData["SpaHost"] = _spaOptions.Value.Host;
             ViewData["BreachPadding"] = GetBreachPadding(); // Mitigate BREACH attack. See http://www.breachattack.com/
             ViewData["Token"] = token;

@@ -8,7 +8,7 @@
     </div>
 </template>
 
-<script>
+<script>/*
 import AuthService from '../services/AuthService'
 import Vue from 'vue'
 
@@ -37,7 +37,7 @@ export default {
         }
     }
 }
-</script>
+*/</script>
 
 <style >
 </style>
