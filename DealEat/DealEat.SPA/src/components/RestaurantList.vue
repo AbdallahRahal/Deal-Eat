@@ -1,9 +1,9 @@
 <template>
         <div id="listRestaurant" class="container">
             
-                        <a href="javascript:history.back()">
+                        <router-link :to="`/`">
                             <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-arrow-circle-left"></i></button>
-                        </a>
+                        </router-link>
             <h1>Liste des restaurants</h1>
 <div class="card text-white bg-success mb-3" style="max-width: 30%;display:inline-block; margin:1%;" v-for="item in restaurantList">
   <div class="card-header">{{ item.name }}</div>

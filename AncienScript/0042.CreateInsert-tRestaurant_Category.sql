@@ -1,9 +1,0 @@
-insert into dealeat.tRestaurant_Category(RestaurantId, CategoryId) values(0, 0);
-insert into dealeat.tRestaurant_Category(RestaurantId, CategoryId) values(1, 0);
-insert into dealeat.tRestaurant_Category(RestaurantId, CategoryId) values(2, 0);
-insert into dealeat.tRestaurant_Category(RestaurantId, CategoryId) values(3, 0);
-insert into dealeat.tRestaurant_Category(RestaurantId, CategoryId) values(4, 0);
-insert into dealeat.tRestaurant_Category(RestaurantId, CategoryId) values(5, 0);
-insert into dealeat.tRestaurant_Category(RestaurantId, CategoryId) values(6, 0);
-insert into dealeat.tRestaurant_Category(RestaurantId, CategoryId) values(7, 0);
-insert into dealeat.tRestaurant_Category(RestaurantId, CategoryId) values(8, 0);

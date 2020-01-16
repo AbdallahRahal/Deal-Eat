@@ -54,7 +54,7 @@ export default createBottomTabNavigator({
   Favorites: {
     screen: UserScreen,
     navigationOptions: {
-      tabBarLabel: 'USER',
+      tabBarLabel: 'PROFIL',
       tabBarIcon: ({ tintColor }) => (
         <Icon2 name="user" color={tintColor} size={25} />
       )
