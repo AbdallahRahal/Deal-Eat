@@ -36,6 +36,12 @@ namespace DealEat.WebApp.Controllers
             return this.CreateResult(result);
         }
 
+        [HttpGet("UpdateRestaurant/{id}", Name = "UpdateRestaurant")]
+        public async Task<IActionResult> UpdateRestaurantById(int id,[FromBody] RestaurantViewModel model)
+        {
+            Result<RestaurantData> result = await _restaurantGateway.UpdateRestaurantById( id, model.Name, model.Adresse, model.PhotoLink, model.Telephone);
+            return this.CreateResult(result);
+        }
         /*
         [HttpPost]
         public async Task<IActionResult> CreateRestaurant([FromBody] RestaurantViewModel model)
