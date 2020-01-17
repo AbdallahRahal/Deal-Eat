@@ -35,7 +35,7 @@ namespace DealEat.DAL
             }
         }
 
-        public async Task<Result<RestaurantData>> UpdateRestaurantById(int RestaurantId, string Name, string Adresse, string PhotoLink, int Telephone)
+        public async Task<Result> UpdateRestaurantById(int RestaurantId, string Name, string Adresse, string PhotoLink, int Telephone)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
@@ -48,7 +48,7 @@ namespace DealEat.DAL
                 
                 await con.ExecuteAsync("DealEat.sRestaurantUpdate", p, commandType: CommandType.StoredProcedure);
 
-               
+
                 return Result.Success(Status.Ok);
             }
         }
