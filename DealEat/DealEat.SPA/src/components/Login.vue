@@ -33,7 +33,7 @@ export default {
         },
 
         onAuthenticated() {
-            this.$router.replace('/');
+            this.$router.replace('/home');
         }
     }
 }

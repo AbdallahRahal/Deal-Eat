@@ -4,7 +4,7 @@
 
             <div class="form-group">
                 <label >Nom</label>
-                <input type="text" v-model="item.Name" class="form-control" required>
+                <input type="text" v-model="item.Name" :placeholder="this.item.Name" class="form-control" required>
             </div>
 
             <div class="form-group">
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-    import { getRestaurantByIdAsync,UdpateRestaurantAsync } from '../api/restaurantApi'
+    import { getRestaurantByIdAsync,UpdateRestaurantAsync } from '../api/restaurantApi'
 
     export default {
         data () {
@@ -36,6 +36,7 @@
                 item: {},
                
                 id: null,
+
                 
             }
         },
@@ -44,36 +45,28 @@
             
             this.id = this.$route.params.id;
             
-            if(this.mode == 'edit') {
-                try {
+           
                     const item = await getRestaurantByIdAsync(this.id);
 
                     this.item = item;
-                }
-                catch(e) {
-                    console.error(e);
-                    this.$router.replace('/home');
-                }
-            }
+                
+                
         },
 
         methods: {
             async onSubmit(event) {
                 
-                event.preventDefault();
-                var errors = [];
-                this.errors = errors;
-
-                if(errors.length == 0) {
-                    try {
+            try {
+                
+                       console.log("envoi form update");
                        
-                        await UdpateRestaurantAsync(this.item);
+                        await UpdateRestaurantAsync(this.item);
                         this.$router.replace('/restaurantList');
                     }
                     catch(e) {
                         console.error(e);
                     }
-                }
+            
             }
         }
     }

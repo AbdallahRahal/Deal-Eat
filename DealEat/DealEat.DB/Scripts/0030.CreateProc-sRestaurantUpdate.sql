@@ -19,7 +19,7 @@ begin
 	end;
 
 	update dealeat.tRestaurant
-	set RestaurantId = @RestaurantId, Name = @Name, Adresse = @Adresse, PhotoLink = @PhotoLink, Telephone=@Telephone
+	set Name = @Name, Adresse = @Adresse, PhotoLink = @PhotoLink, Telephone=@Telephone
 	where RestaurantId = @RestaurantId;
 	
 	commit;

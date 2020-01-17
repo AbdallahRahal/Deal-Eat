@@ -13,7 +13,7 @@ export async function getRestaurantByIdAsync(restaurantId) {
 }
 
 
-export async function UdpateRestaurantAsync(restaurantId) {
+export async function UpdateRestaurantAsync(restaurantId) {
     return await getAsync(`${endpoint}/UpdateRestaurant/${restaurantId}`);
 }
 /*
