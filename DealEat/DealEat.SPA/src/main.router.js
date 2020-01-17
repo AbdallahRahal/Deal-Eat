@@ -3,7 +3,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
-//import requireAuth from './helpers/requireAuth';
+import requireAuth from './helpers/requireAuth';
 
 // Components
 import Home from './components/Home.vue'
@@ -11,6 +11,7 @@ import Login from './components/Login.vue'
 import Logout from './components/Logout.vue'
 import RestaurantList from './components/RestaurantList.vue'
 import ReductionList from './components/ReductionList.vue'
+import RestaurantInfo from './components/RestaurantInfo.vue'
 
 //import User from './components/User.vue'
 
@@ -18,8 +19,9 @@ const routes = [
     { path: '/home', component: Home },
     { path: '', component: Home },
     { path: '/login', component: Login },
-    { path: '/restaurantList', component: RestaurantList },
-    { path: '/reductionList', component: ReductionList },
+    { path: '/restaurantList', component: RestaurantList, beforeEnter: requireAuth },
+    { path: '/reductionList', component: ReductionList, beforeEnter: requireAuth  },
+    { path: '/restaurantInfo', component: RestaurantInfo, beforeEnter: requireAuth  },
     /*{ path: '/', component: Home },
     //{ path: '/logout', component: Logout, beforeEnter: requireAuth },
 
