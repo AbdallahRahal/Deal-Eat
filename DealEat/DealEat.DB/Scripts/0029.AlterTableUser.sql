@@ -1,0 +1,1 @@
+Alter table dealeat.tUser ADD CONSTRAINT unique_email UNIQUE (Email);
