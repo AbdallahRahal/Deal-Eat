@@ -10,5 +10,5 @@ create table dealeat.tHoraire
 
 	constraint PK_dealeat_tHoraire primary key(HoraireId),
 	constraint FK_dealeat_tHoraire_tRestaurant foreign key(RestaurantId) references dealeat.tRestaurant(RestaurantId),
-	constraint CK_tCategory_Name check([Name] in ('Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'))
+	constraint CK_dealeat_tHoraire check([Day] in ('Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'))
 );
