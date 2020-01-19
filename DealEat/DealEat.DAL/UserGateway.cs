@@ -88,6 +88,21 @@ namespace DealEat.DAL
             }
         }
 
+
+        public async Task<UserData> FindMerchantByEmail(string email)
+        {
+            
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+
+                return await con.QueryFirstOrDefaultAsync<UserData>(
+                     "select UserId, Email, Name, LastName, Pseudo, [Password] " +
+                    "from dealeat.tUser Join dealeat.tMerchant on UserId = MerchantId " +
+                    "where Email = @Email",
+                    new { Email = email });
+            }
+        }
+
         public async Task<Result> Delete(int userId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))

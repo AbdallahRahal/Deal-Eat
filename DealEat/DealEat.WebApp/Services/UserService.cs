@@ -30,5 +30,15 @@ namespace DealEat.WebApp.Services
 
             return null;
         }
+        public async Task<UserData> FindMerchantUser(string email, string password)
+        {
+            UserData user = await _userGateway.FindMerchantByEmail(email);
+            if (user != null && _passwordHasher.VerifyHashedPassword(user.Password, password) == PasswordVerificationResult.Success)
+            {
+                return user;
+            }
+
+            return null;
+        }
     }
 }
