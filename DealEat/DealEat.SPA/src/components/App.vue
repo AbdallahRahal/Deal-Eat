@@ -2,7 +2,7 @@
     <div id="app">
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="margin:2%;">
-                   <router-link :to="`/`" class="navbar-brand"style="width: 4%;"> <img src="../../Logo Deal'eat V1.png" style="width: 200%;"></router-link >
+                   <router-link :to="`/home`" class="navbar-brand"style="width: 4%;"> <img src="../../Logo Deal'eat V1.png" style="width: 200%;"></router-link >
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
                     </button>
@@ -66,15 +66,16 @@ export default {
       },
         login(provider) {
             AuthService.login(provider);
-            this.$router.go("/");
+            
         },
 
         onAuthenticated() {
-           //this.$router.go("/");
+          // this.$router.go("/");
         },
         logout(){
           AuthService.logout();
           console.log( "Deconnexion = "+AuthService.isConnected+" Email = "+AuthService.email);
+          this.$router.go("/home");
         }
     }
 }

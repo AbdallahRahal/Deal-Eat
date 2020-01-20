@@ -7,6 +7,7 @@ using Dapper;
 using System.Data.SqlClient;
 using System.Data;
 
+
 namespace DealEat.DAL
 {
     public class RestaurantGateway
@@ -33,6 +34,24 @@ namespace DealEat.DAL
                     new { Id = id });
                 if (restaurant == null) return Result.Failure<RestaurantData>(Status.NotFound, "Restaurant not found.");
                 return Result.Success(restaurant);
+            }
+        }
+
+        public async Task<Result> UpdateRestaurantById(int RestaurantId, string Name, string Adresse, string PhotoLink, int Telephone)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                var p = new DynamicParameters();
+                p.Add("@RestaurantId", RestaurantId);
+                p.Add("@Name", Name);
+                p.Add("@Adresse", Adresse);
+                p.Add("@PhotoLink", PhotoLink);
+                p.Add("@Telephone", Telephone );
+                
+                await con.ExecuteAsync("DealEat.sRestaurantUpdate", p, commandType: CommandType.StoredProcedure);
+
+
+                return Result.Success(Status.Ok);
             }
         }
         public async Task<IEnumerable<RestaurantData>> GetAll()

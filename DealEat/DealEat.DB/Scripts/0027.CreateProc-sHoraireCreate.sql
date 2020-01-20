@@ -1,6 +1,6 @@
 create proc dealeat.sHoraireCreate
 (
-	@Day enum,
+	@Day nvarchar(45),
 	@OuvertureMatin TIME,
 	@FermetureMatin TIME,
 	@OuvertureAprem TIME,
