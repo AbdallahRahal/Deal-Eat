@@ -29,7 +29,7 @@ namespace DealEat.WebApp.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{id}", Name = "GetRestaurant")]
+        [HttpGet("GetRestaurant/{id}", Name = "GetRestaurant")]
         public async Task<IActionResult> GetRestaurantById(int id)
         {
             Result<RestaurantData> result = await _restaurantGateway.FindById(id);

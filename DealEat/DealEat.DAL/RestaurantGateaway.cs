@@ -24,12 +24,14 @@ namespace DealEat.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 RestaurantData restaurant = await con.QueryFirstOrDefaultAsync<RestaurantData>(
-                    "select r.UserId, r.UserPseudo, r.RestaurantId, r.Name, r.Adresse, r.Photolink, r.Telephone " +
-                    "from dealeat.vRestaurant as r " +
-                    "where r.RestaurantId = @Id ",
+                    @"select r.RestaurantId, r.Name, r.Adresse, r.Photolink, r.Telephone, c.Name as Category
+                    from dealeat.vRestaurant as r
+                    LEFT JOIN  dealeat.tRestaurant_Category as rc ON r.RestaurantId = rc.RestaurantId
+                    LEFT JOIN  dealeat.tCategory as c ON rc.CategoryId = c.CategoryId
+                    where r.RestaurantId = @Id ",
 
                     new { Id = id });
-                if (restaurant == null) return Result.Failure<RestaurantData>(Status.NotFound, "User not found.");
+                if (restaurant == null) return Result.Failure<RestaurantData>(Status.NotFound, "Restaurant not found.");
                 return Result.Success(restaurant);
             }
         }
