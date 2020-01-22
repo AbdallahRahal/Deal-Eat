@@ -19,7 +19,7 @@ namespace DealEat.DAL
             _connectionString = connectionString;
         }
 
-        /*public async Task<Result<ReductionData>> FindById(int id)
+        public async Task<Result<ReductionData>> FindById(int id)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
@@ -33,7 +33,7 @@ namespace DealEat.DAL
                 if (reduction == null) return Result.Failure<ReductionData>(Status.NotFound, "User not found.");
                 return Result.Success(reduction);
             }
-        }*/
+        }
         public async Task<IEnumerable<ReductionData>> GetAll()
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
@@ -48,7 +48,22 @@ namespace DealEat.DAL
         }
 
 
+        public async Task<Result<int>> CreateReduction(int reduction,int percent, DateTime start_date, DateTime end_date, int restaurantId, int tel, byte[] password)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                var p = new DynamicParameters();
+                p.Add("@Reduction", reduction);
+                p.Add("@Start_Date", start_date);
+                p.Add("@End_Date", end_date);
+                p.Add("@RestaurantId", restaurantId);
+                p.Add("@Percent", percent);
 
+                await con.ExecuteAsync("dealeat.sSoldCreate", p, commandType: CommandType.StoredProcedure);
+
+                return Result.Success(p.Get<int>("@SoldId"));
+            }
+        }
 
 
     }

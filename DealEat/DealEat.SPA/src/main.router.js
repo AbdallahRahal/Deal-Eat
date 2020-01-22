@@ -21,6 +21,7 @@ const routes = [
     { path: '/login', component: Login },
     { path: '/updateRestaurant/:id', component: UpdateRestaurant, beforeEnter: requireAuth },
     { path: '/reductionList', component: ReductionList, beforeEnter: requireAuth  },
+    { path: '/newreduction/:id', component: NewReduction, beforeEnter: requireAuth  },
     { path: '/restaurantInfo', component: RestaurantInfo, beforeEnter: requireAuth  },
     /*{ path: '/', component: Home },
     //{ path: '/logout', component: Logout, beforeEnter: requireAuth },

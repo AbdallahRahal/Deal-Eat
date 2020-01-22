@@ -29,12 +29,17 @@ namespace DealEat.WebApp.Controllers
             return Ok(result);
         }
 
-        /*[HttpGet("{id}", Name = "GetReduction")]
+        [HttpGet("{id}", Name = "GetReduction")]
         public async Task<IActionResult> GetReductionById(int id)
         {
             Result<ReductionData> result = await _reductionGateway.FindById(id);
             return this.CreateResult(result);
-        }*/
-
+        }
+        [HttpGet("restaurant/{id}", Name = "NewReduction")]
+        public async Task<IActionResult> newReduction(int id, [FromBody] SoldViewModel model)
+        {
+            Result<ReductionData> result = await _reductionGateway.CreateReduction(model.Reduction,model.model.Start_Date,model.End_Date);
+            return this.CreateResult(result);
+        }
     }
 }
