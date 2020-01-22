@@ -11,3 +11,8 @@ export async function getReductionListAsync() {
 export async function getReductionByIdAsync(reductionId) {
     return await getAsync(`${endpoint}/${reductionId}`);
 }
+
+
+export async function newReductionAsync(restaurantId,model) {
+    return await getAsync(`${endpoint}/restaurant/${restaurantId}`,model);
+}
