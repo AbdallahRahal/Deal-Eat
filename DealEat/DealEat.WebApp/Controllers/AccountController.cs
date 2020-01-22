@@ -39,6 +39,13 @@ namespace DealEat.WebApp.Controllers
             return View();
         }
 
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult LoginWeb()
+        {
+            return View();
+        }
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -56,6 +63,26 @@ namespace DealEat.WebApp.Controllers
                 return RedirectToAction(nameof(Authenticated));
             }
             
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LoginWeb(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                UserData user = await _userService.FindMerchantUser(model.Email, model.Password);
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return View(model);
+                }
+                await SignIn(user.Email, user.UserId.ToString());
+                return RedirectToAction(nameof(Authenticated));
+            }
+
             return View(model);
         }
 

@@ -16,8 +16,8 @@ import UpdateRestaurant from './components/UpdateRestaurant.vue'
 //import User from './components/User.vue'
 
 const routes = [
-    { path: '/home', component: Home },
-    { path: '', component: Login },
+    { path: '/home', component: Home , beforeEnter: requireAuth},
+    { path: '', component: Home, beforeEnter: requireAuth },
     { path: '/login', component: Login },
     { path: '/updateRestaurant/:id', component: UpdateRestaurant, beforeEnter: requireAuth },
     { path: '/reductionList', component: ReductionList, beforeEnter: requireAuth  },

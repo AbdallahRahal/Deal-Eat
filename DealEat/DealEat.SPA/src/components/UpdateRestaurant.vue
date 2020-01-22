@@ -1,43 +1,42 @@
 <template>
     <div>
+    <div class="container">
         <form @submit="onSubmit($event)">
-            <div v-for="item in restaurantList">
             <div class="form-group">
-                <label class="col-form-label" for="inputDefault">Nom{{item.name}}</label>
-                <input type="text" class="form-control" required>
+                <label class="col-form-label" for="inputDefault">Nom</label>
+                <input type="text" class="form-control" v-model="item.name" style="max-width: 40%;" required>
             </div>
 
             <div class="form-group">
                 <label class="col-form-label" for="inputDefault">Adresse</label>
-                <input type="text" class="form-control" required>
+                <input type="text" class="form-control" v-model="item.adresse" style="max-width: 40%;" required>
             </div>
 
             <div class="form-group">
                 <label class="col-form-label" for="inputDefault">Lien Photo</label>
-                <input type="text" class="form-control" required>
+                <input type="text" class="form-control" v-model="item.photoLink" :placeholder="item.photoLink" style="max-width: 40%;" required>
             </div>
 
             <div class="form-group">
                 <label class="col-form-label" for="inputDefault">Numero Telephone</label>
-                <input type="text" class="form-control" required>
-            </div>
+                <input type="text" class="form-control" v-model="item.telephone" :placeholder="item.telephone" style="max-width: 40%;" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Sauvegarder</button>
         </form>
-
+    </div>
     </div>
 </template>
 
 <script>
-    import { getRestaurantByIdAsync,UpdateRestaurantAsync } from '../api/restaurantApi'
+    import { getRestaurantByIdWebAsync,UpdateRestaurantAsync } from '../api/restaurantApi'
+    import { requireAuth } from '../helpers/requireAuth'
 
     export default {
         data () {
             return {
                
-                restaurantList: [],
-
+               item: {}
                 
             }
         },
@@ -50,30 +49,17 @@
 
         methods: {
             async onSubmit(event) {
-                
-            try {
-                
+                event.preventDefault();
                        console.log("envoi form update");
                        
-                        await UpdateRestaurantAsync(this.item);
-                        this.$router.replace('/restaurantList');
-                    }
-                    catch(e) {
-                        console.error(e);
-                    }
+                        await UpdateRestaurantAsync(this.item.restaurantId,this.item);
+                        //this.$router.replace('/home');
            
             
             },
             async refreshList() {
-                try {
-                    
                     this.id = this.$route.params.id;
-                    this.restaurantList = await getRestaurantByIdAsync(this.id);
-                    
-                }
-                catch(e) {
-                    console.error(e);
-                }
+                    this.item = await getRestaurantByIdWebAsync(this.id);
             },
 
         }

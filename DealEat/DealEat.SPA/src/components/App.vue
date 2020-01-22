@@ -67,15 +67,16 @@ export default {
       },
         login(provider) {
             AuthService.login(provider);
-            this.$router.go("/");
+            
         },
 
         onAuthenticated() {
-           //this.$router.go("/");
+          // this.$router.go("/");
         },
         logout(){
           AuthService.logout();
           console.log( "Deconnexion = "+AuthService.isConnected+" Email = "+AuthService.email);
+          this.$router.go("/home");
         }
     }
 }

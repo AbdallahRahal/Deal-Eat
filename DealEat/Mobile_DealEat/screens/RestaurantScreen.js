@@ -8,6 +8,7 @@ import {
     Dimensions,
     ActivityIndicator,
     FlatList,
+    Button,
     Image
 } from 'react-native';
 import Colors from '../constants/Colors';
@@ -16,6 +17,7 @@ import Category from '../components/Restaurant/Category';
 import RestaurantPreview from '../components/Restaurant/RestaurantPreview';
 import GetRestaurantList from '../services/GetRestaurantList';
 //import GetRestaurantListFromApi from '../services/GetRestaurantList';
+import ReductionScreen from './ReductionScreen';
 const urlApi = 'http://localhost:5000/api/Restaurant';
 
 
@@ -99,7 +101,7 @@ class RestaurantScreen extends Component {
                                     renderItem={({ item }) =>
                                         <RestaurantPreview
                                             picture={item.photoLink}
-                                            categories= {item.category}
+                                            categories={item.category}
                                             nameRestaurant={item.name}
                                             average={4.3}
                                             nbNotes={143}

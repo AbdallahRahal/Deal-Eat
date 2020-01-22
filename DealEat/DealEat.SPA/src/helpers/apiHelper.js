@@ -42,7 +42,9 @@ async function send(url, method, data, contentType, isRetrying) {
 export function postAsync(url, data) {
     return send(url, 'POST', data, 'application/json');
 }
-
+export function pestAsync(url, data,data1,data2,data3) {
+    return send(url, 'POST', data,data1,data2,data3, 'application/json');
+}
 export function putAsync(url, data) {
     return send(url, 'PUT', data, 'application/json');
 }
