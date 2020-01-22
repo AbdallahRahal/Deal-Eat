@@ -1,6 +1,9 @@
 <template>
     <div>
+        
+            
     <div class="container">
+        <h1>Modifier mon restaurant</h1>
         <form @submit="onSubmit($event)">
             <div class="form-group">
                 <label class="col-form-label" for="inputDefault">Nom</label>
@@ -50,10 +53,9 @@
         methods: {
             async onSubmit(event) {
                 event.preventDefault();
-                       console.log("envoi form update");
                        
                         await UpdateRestaurantAsync(this.item.restaurantId,this.item);
-                        //this.$router.replace('/home');
+                        this.$router.replace('/home');
            
             
             },

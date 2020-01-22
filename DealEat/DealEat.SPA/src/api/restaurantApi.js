@@ -21,9 +21,8 @@ export async function UpdateRestaurantAsync(restaurantId,model) {
     return await postAsync(`${endpoint}/UpdateRestaurant/${restaurantId}`,model);
 }
 
-/*
-export async function createRestaurantAsync(model) {
-    return await postAsync(endpoint, model);
+export async function CreateRestaurantAsync(id, model) {
+    return await postAsync(`${endpoint}/CreateRestaurant/${id}`, model);
 }
 
 /*export async function deleteRestaurantAsync(restaurantId) {

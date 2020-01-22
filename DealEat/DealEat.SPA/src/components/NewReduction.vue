@@ -29,7 +29,7 @@
 
 <script>
 import { getRestaurantByIdAsync } from '../api/restaurantApi'
-import { newReductionByIdAsync } from '../api/reductionAPI'
+import { newReductionByIdAsync } from '../api/reductionApi'
     export default {
         data () {
             return {

@@ -48,7 +48,7 @@ namespace DealEat.DAL
         }
 
 
-        public async Task<Result<int>> CreateReduction(int reduction,int percent, DateTime start_date, DateTime end_date, int restaurantId, int tel, byte[] password)
+        public async Task<Result<int>> CreateReduction( int reduction, DateTime start_date, DateTime end_date, int bracketId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
@@ -56,8 +56,7 @@ namespace DealEat.DAL
                 p.Add("@Reduction", reduction);
                 p.Add("@Start_Date", start_date);
                 p.Add("@End_Date", end_date);
-                p.Add("@RestaurantId", restaurantId);
-                p.Add("@Percent", percent);
+                p.Add("@BracketId", bracketId);
 
                 await con.ExecuteAsync("dealeat.sSoldCreate", p, commandType: CommandType.StoredProcedure);
 

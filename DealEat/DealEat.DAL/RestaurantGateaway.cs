@@ -144,10 +144,11 @@ namespace DealEat.DAL
                 p.Add("@PhotoLink", PhotoLink);
                 p.Add("@Telephone", Telephone);
                 p.Add("@MerchantId", MerchantId);
-                await con.ExecuteAsync("dealeat.sRestaurantCreate", p, commandType: CommandType.StoredProcedure);
+                p.Add("@RestaurantId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                await con.ExecuteAsync("dealeat.sRestaurantCreata", p, commandType: CommandType.StoredProcedure);
 
-                
-                return Result.Success(Status.Created, p.Get<int>("@RestaurantId"));
+
+                return Result.Success(p.Get<int>("@RestaurantId"));
             }
         }
 

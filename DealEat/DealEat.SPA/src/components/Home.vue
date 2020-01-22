@@ -55,7 +55,7 @@
                 }else{
                     return false;
                 }
-      },
+            },
             async refreshList() {
                 try {
                     this.restaurantList = await getRestaurantListAsync();

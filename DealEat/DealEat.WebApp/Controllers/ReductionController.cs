@@ -38,7 +38,7 @@ namespace DealEat.WebApp.Controllers
         [HttpGet("restaurant/{id}", Name = "NewReduction")]
         public async Task<IActionResult> newReduction(int id, [FromBody] SoldViewModel model)
         {
-            Result<ReductionData> result = await _reductionGateway.CreateReduction(model.Reduction,model.model.Start_Date,model.End_Date);
+            Result<int> result = await _reductionGateway.CreateReduction(model.Reduction,model.Start_Date, model.End_Date,model.BracketId);
             return this.CreateResult(result);
         }
     }

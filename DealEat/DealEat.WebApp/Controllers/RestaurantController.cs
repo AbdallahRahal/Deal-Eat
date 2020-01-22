@@ -18,10 +18,10 @@ namespace DealEat.WebApp.Controllers
         readonly UserGateway _userGateway;
 
 
-        public RestaurantController(RestaurantGateway restaurantGateway)
+        public RestaurantController(RestaurantGateway restaurantGateway, UserGateway userGateway )
         {
             _restaurantGateway = restaurantGateway;
-           
+            _userGateway =  userGateway;
 
         }
 
@@ -75,7 +75,7 @@ namespace DealEat.WebApp.Controllers
         }
 
 
-        [HttpGet("CreateRestaurant/{id}", Name = "CreateRestaurant")]
+        [HttpPost("CreateRestaurant/{email}", Name = "CreateRestaurant")]
         public async Task<IActionResult> CreateRestaurant(string email, [FromBody] RestaurantViewModel model)
         {
             UserData user = await _userGateway.FindByEmail(email);

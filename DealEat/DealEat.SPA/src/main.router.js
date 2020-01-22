@@ -12,6 +12,8 @@ import Logout from './components/Logout.vue'
 import ReductionList from './components/ReductionList.vue'
 import RestaurantInfo from './components/RestaurantInfo.vue'
 import UpdateRestaurant from './components/UpdateRestaurant.vue'
+import NewRestaurant from './components/NewRestaurant.vue'
+import NewReduction from './components/NewReduction.vue'
 
 //import User from './components/User.vue'
 
@@ -23,6 +25,7 @@ const routes = [
     { path: '/reductionList', component: ReductionList, beforeEnter: requireAuth  },
     { path: '/newreduction/:id', component: NewReduction, beforeEnter: requireAuth  },
     { path: '/restaurantInfo', component: RestaurantInfo, beforeEnter: requireAuth  },
+    { path: '/addRestaurant', component: NewRestaurant, beforeEnter: requireAuth  },
     /*{ path: '/', component: Home },
     //{ path: '/logout', component: Logout, beforeEnter: requireAuth },
 
