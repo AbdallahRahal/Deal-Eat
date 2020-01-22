@@ -1,29 +1,31 @@
 <template>
     <div>
         <form @submit="onSubmit($event)">
-
+            <div v-for="item in restaurantList">
             <div class="form-group">
-                <label >Nom</label>
-                <input type="text" v-model="item.Name" :placeholder="this.item.Name" class="form-control" required>
+                <label class="col-form-label" for="inputDefault">Nom{{item.name}}</label>
+                <input type="text" class="form-control" required>
             </div>
 
             <div class="form-group">
-                <label >Adresse</label>
-                <input type="text" v-model="item.Adresse" class="form-control" required>
+                <label class="col-form-label" for="inputDefault">Adresse</label>
+                <input type="text" class="form-control" required>
             </div>
 
             <div class="form-group">
-                <label >Lien Photo</label>
-                <input type="text" v-model="item.Photolink" class="form-control" required>
+                <label class="col-form-label" for="inputDefault">Lien Photo</label>
+                <input type="text" class="form-control" required>
             </div>
 
             <div class="form-group">
-                <label >Numero Telephone</label>
-                <input type="text" v-model="item.Telephone" class="form-control">
+                <label class="col-form-label" for="inputDefault">Numero Telephone</label>
+                <input type="text" class="form-control" required>
+            </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Sauvegarder</button>
         </form>
+
     </div>
 </template>
 
@@ -33,9 +35,8 @@
     export default {
         data () {
             return {
-                item: {},
                
-                id: null,
+                restaurantList: [],
 
                 
             }
@@ -43,13 +44,7 @@
 
         async mounted() {
             
-            this.id = this.$route.params.id;
-            
-           
-                    const item = await getRestaurantByIdAsync(this.id);
-
-                    this.item = item;
-                
+            await this.refreshList();
                 
         },
 
@@ -66,8 +61,21 @@
                     catch(e) {
                         console.error(e);
                     }
+           
             
-            }
+            },
+            async refreshList() {
+                try {
+                    
+                    this.id = this.$route.params.id;
+                    this.restaurantList = await getRestaurantByIdAsync(this.id);
+                    
+                }
+                catch(e) {
+                    console.error(e);
+                }
+            },
+
         }
     }
 </script>
