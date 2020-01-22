@@ -16,6 +16,7 @@
     <!-- <img src= {{ item.photoLink }} > -->
 
     <p class="card-text">{{ item.adresse }}</p>
+    <p class="card-text"><img style="max-width:100%;" :src="item.photoLink"></p>
     <p class="card-text">Tel: 0{{ item.telephone }}</p>
   </div>
   </button>
@@ -44,6 +45,7 @@
 
         async mounted() {
             await this.refreshList();
+            
             
         },
 
