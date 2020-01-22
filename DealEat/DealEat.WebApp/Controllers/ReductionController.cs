@@ -25,7 +25,16 @@ namespace DealEat.WebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetReductionList()
         {
-           IEnumerable<ReductionData> result = await _reductionGateway.GetAll();
+           IEnumerable<ReductionData2> result = await _reductionGateway.GetAll();
+            return Ok(result);
+        }
+
+
+
+        [HttpGet("GetReductionByRestaurant/{id}", Name = "GetReductionByRestaurant")]
+        public async Task<IActionResult> GetReductionByRestaurant(int id)
+        {
+            IEnumerable<ReductionData> result = await _reductionGateway.GetReduction(id);
             return Ok(result);
         }
 

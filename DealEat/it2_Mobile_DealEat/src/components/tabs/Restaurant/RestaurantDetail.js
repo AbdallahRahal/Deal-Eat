@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, ActivityIndicator, SafeAreaView, Image, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { View, ActivityIndicator, SafeAreaView, Image, StyleSheet, TouchableOpacity, FlatList, ScrollViewBase } from 'react-native';
 import { Text, List, ListItem } from 'native-base';
 import { CustomHeader } from '../../CustomHeader';
 import Colors from '../../../constants/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import StarRating from 'react-native-star-rating';
 import { ScrollView } from 'react-native-gesture-handler';
+
 
 
 
@@ -19,8 +20,9 @@ export class RestaurantDetail extends React.Component {
       isLoading: true,
       dataSource: [],
       feedbackSource: [],
+      ReductionSource: [],
       id: this.props.navigation.getParam('itemId'),
-      menuSelect: 2,
+      menuSelect: 1,
       menuHoraireOpen: false,
 
     }
@@ -43,6 +45,14 @@ export class RestaurantDetail extends React.Component {
       .then((responseJson2) => {
         this.setState({
           feedbackSource: responseJson2
+        })
+      });
+
+    fetch('http://localhost:5000/api/reduction/GetReductionByRestaurant/' + this.state.id)
+      .then((response3) => response3.json())
+      .then((responseJson3) => {
+        this.setState({
+          ReductionSource: responseJson3
         })
       });
     /*fetch('http://localhost:5000/api/Restaurant/CreateNewFeedback/', {
@@ -120,9 +130,68 @@ export class RestaurantDetail extends React.Component {
 
 
               {(this.state.menuSelect == 0) ?
-                null
+                <View style={{ flex: 5 }}>
+                  {console.log(this.state.ReductionSource)}
+
+                  <FlatList
+                    data={this.state.ReductionSource}
+                    contentContainerStyle={{
+                      flexDirection: 'column',
+                    }}
+                    renderItem={({ item }) =>
+                      <View>
+                        <View style={{
+                          borderColor: 'green', borderWidth: 3
+                          , width: 350, minHeight: 150, backgroundColor: 'white', borderRadius: 9,
+                          marginHorizontal: 10, marginBottom: 20,
+                        }}>
+
+                          <View style={{ flexDirection: 'row' }}>
+
+                            <View style={{ flex: 1 }}>
+                              <Image
+                                style={{
+                                  width: '100%', height: 150, alignSelf: 'flex-start', borderRadius: 6, resizeMode: 'cover',
+                                }}
+                                source={{ uri: item.photoLink }}
+                              />
+                            </View>
 
 
+                            <View style={{ flex: 2, width: 200, }}>
+                              <View style={{ flex: 1, flexDirection: 'column', padding: 5 }}>
+
+                                <Text style={{ fontSize: 21, fontWeight: 'bold', alignSelf: 'center' }}>
+                                  {item.name}
+                                </Text>
+
+                                <Text style={{ fontStyle: 'italic', margin: 5, textDecorationLine: 'underline' }}>Information : </Text>
+                                <View style={{ flexDirection: 'row' }} >
+                                  <Text >{item.information}</Text>
+                                </View>
+
+                                <View style={{  flex: 1, justifyContent: 'flex-end' }}>
+                                  <View style={{ alignSelf: 'flex-end' }} >
+                                    <View style={{flexDirection:'row'}}>
+                                      <Text style={{}}> Prix : </Text>
+                                      <Text style={{textDecorationLine:'line-through'}}>{item.price}€   </Text>
+                                      <Text>{ item.price - item.reduction}€</Text>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+                            </View>
+
+                          </View>
+                        </View>
+                      </View>
+                    }
+                    keyExtractor={item => (item.photoLink + item.name)}
+                  />
+
+
+
+                </View>
                 : null
               }
 
@@ -151,7 +220,7 @@ export class RestaurantDetail extends React.Component {
                           starSize={15}
                           rating={3.7}
                         />
-                        <Text style={styles.avis}>{23} avis</Text>
+                        <Text style={styles.avis}>{3} avis</Text>
                       </View>
                     </View>
 
@@ -221,34 +290,42 @@ export class RestaurantDetail extends React.Component {
 
               {(this.state.menuSelect == 2) ?
 
-                <View style={{ flex: 5, borderWidth: 2, borderColor: 'green' }}>
+                <View style={{ flex: 5, }}>
 
-                  <ScrollView style={{ flex: 4, margin: 20, borderWidth: 2, borderColor: 'red' }}>
+                  <View style={{ flex: 4, margin: 20, }}>
                     {console.log(this.state.feedbackSource)}
 
                     <View >
                       <View  >
                         <FlatList
                           data={this.state.feedbackSource}
+
                           contentContainerStyle={{
                             flexDirection: 'column',
-                            flexWrap: "wrap",
                             justifyContent: 'space-between',
                           }}
+
                           renderItem={({ item }) =>
                             <View >
 
-                              <View style={{flexDirection:'row', borderWidth:3, borderColor:'grey'}}>
+                              <View style={{ flexDirection: 'row', }}>
 
-                                <View style={{}}>
+                                <View style={{ flex: 2 }}>
                                   <Text style={{ fontWeight: 'bold', fontStyle: 'italic', }}>
                                     {item.name}
                                   </Text>
                                 </View>
 
-                                <View style={{ borderWidth:3, borderColor:'blue'
-                                  ,justifyContent:'flex-end' ,alignContent:'flex-end', width :200 }}>
-                                  <Text>Note :  /5</Text>
+                                <View style={{
+                                  flex: 1
+                                  , justifyContent: 'flex-end', alignContent: 'flex-end', alignItems: 'flex-end', alignSelf: 'flex-end',
+                                }}>
+                                  <StarRating
+                                    disabled={true}
+                                    maxStar={5}
+                                    starSize={15}
+                                    rating={item.note}
+                                  />
                                 </View>
 
                               </View>
@@ -270,7 +347,7 @@ export class RestaurantDetail extends React.Component {
                       </View>
                     </View>
 
-                  </ScrollView>
+                  </View>
 
                   <View style={{
                     margin: 0, justifyContent: 'flex-end', borderWidth: 2, borderColor: 'blue',

@@ -34,21 +34,38 @@ namespace DealEat.DAL
                 return Result.Success(reduction);
             }
         }*/
-        public async Task<IEnumerable<ReductionData>> GetAll()
+        public async Task<IEnumerable<ReductionData2>> GetAll()
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                return await con.QueryAsync<ReductionData> (
-                   "select * " +
-                    "from dealeat.vReduc ");
+                return await con.QueryAsync<ReductionData2> (
+                   @"select R.RestaurantId, R.name as RestaurantName, B.Name as BracketName, B.PhotoLink, B.Price, B.information, S.Reduction
+                    from dealeat.tRestaurant as R
+                    LEFT JOIN dealeat.tBracket as B on R.RestaurantId = B.RestaurantId
+                    LEFT JOIN dealeat.tSold as S on B.BracketId = S.BracketId
 
+                    ");
 
                 
             }
         }
 
 
+        public async Task<IEnumerable<ReductionData>> GetReduction(int id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                IEnumerable<ReductionData> listReduction = await con.QueryAsync<ReductionData>(
+                    @"select *
+                    from dealeat.tBracket as B
+                    LEFT JOIN  dealeat.tSold as S ON B.BracketId = S.BracketId
 
+                    where B.RestaurantId = @id; ",
+                   new { Id = id });
+                //if (id == 0) return Result.Failure<RestaurantData>(Status.NotFound, "Restaurant not found.");
+                return (listReduction);
+            }
+        }
 
 
     }
