@@ -3,8 +3,14 @@
             
             <h1>Mes restaurants</h1>
 <div class="card text-white bg-success mb-3" style="max-width: 30%;display:inline-block; margin:1%;" v-for="item in restaurantList">
-    <router-link :to="`/updateRestaurant/${item.restaurantId}`"><button class="btn btn-primary btn-lg btn-block" type="submit">
-  <div class="card-header">{{ item.name }}</div>
+     <router-link :to="`/updateRestaurant/${item.restaurantId}`">
+    <span class="badge badge-pill badge-primary" style="float: none;">Modifier</span>
+    </router-link>
+    <router-link :to="`/newreduction/${item.restaurantId}`">
+    <span class="badge badge-pill badge-primary" style="float:none;">Reductions</span>
+    </router-link>
+   <button class="btn btn-primary btn-lg btn-block" type="submit">
+  <div class="card-header">{{ item.name }} </div>
   <div class="card-body">
     <!--<h4 class="card-title">{{ item.photoLink }}</h4> -->
     <!-- <img src= {{ item.photoLink }} > -->
@@ -12,7 +18,7 @@
     <p class="card-text">{{ item.adresse }}</p>
     <p class="card-text">Tel: 0{{ item.telephone }}</p>
   </div>
-  </button></router-link>
+  </button>
 </div>
 
 <div class="card text-white bg-success mb-3" style="max-width: 30%;display:inline-block; margin:1%;">
