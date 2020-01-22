@@ -122,7 +122,22 @@ namespace DealEat.DAL
             }
         }
 
+        public async Task<Result<int>> CreateRestaurant(string Name, string Adresse, string PhotoLink, int Telephone, int MerchantId)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                var p = new DynamicParameters();
+                p.Add("@Name", Name);
+                p.Add("@Adresse", Adresse);
+                p.Add("@PhotoLink", PhotoLink);
+                p.Add("@Telephone", Telephone);
+                p.Add("@MerchantId", MerchantId);
+                await con.ExecuteAsync("dealeat.sRestaurantCreate", p, commandType: CommandType.StoredProcedure);
 
+                
+                return Result.Success(Status.Created, p.Get<int>("@RestaurantId"));
+            }
+        }
 
         bool IsNameValid(string name) => !string.IsNullOrWhiteSpace(name);
 
