@@ -80,7 +80,9 @@ namespace DealEat.WebApp.Controllers
         {
             UserData user = await _userGateway.FindByEmail(email);
             Result<int> result = await _restaurantGateway.CreateRestaurant( model.Name, model.Adresse, model.PhotoLink, model.Telephone,user.UserId );
+
             return Ok(result);
+
         }
         /*
         [HttpDelete("{id}")]

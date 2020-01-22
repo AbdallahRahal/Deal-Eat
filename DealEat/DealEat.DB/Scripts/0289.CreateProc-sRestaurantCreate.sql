@@ -1,8 +1,8 @@
-create proc dealeat.sRestaurantCreata
+create proc dealeat.sRestaurantCreati
 (
 	@Name nvarchar(45),
 	@Adresse nvarchar(45),
-	@PhotoLink nvarchar(45),
+	@PhotoLink nvarchar(255),
 	@Telephone int,
 	@MerchantId int,
 	@RestaurantId int out
