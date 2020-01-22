@@ -29,6 +29,16 @@ namespace DealEat.WebApp.Controllers
             return Ok(result);
         }
 
+
+
+        [HttpGet("GetFeedbackByRestaurant/{id}", Name = "GetFeedbackByRestaurant")]
+        public async Task<IActionResult> GetFeedbackByRestaurant(int id)
+        {
+            IEnumerable<FeedBackData> result = await _restaurantGateway.GetFeedback(id);
+            return Ok(result);
+        }
+
+
         [HttpGet("GetRestaurant/{id}", Name = "GetRestaurant")]
         public async Task<IActionResult> GetRestaurantById(int id)
         {
@@ -36,12 +46,35 @@ namespace DealEat.WebApp.Controllers
             return this.CreateResult(result);
         }
 
+
+
+
+
+
+
+
+
+
+
+
         [HttpGet("UpdateRestaurant/{id}", Name = "UpdateRestaurant")]
         public async Task<IActionResult> UpdateRestaurantById(int id,[FromBody] RestaurantViewModel model)
         {
             Result result = await _restaurantGateway.UpdateRestaurantById( id, model.Name, model.Adresse, model.PhotoLink, model.Telephone);
             return this.CreateResult(result);
         }
+
+        [HttpPost("CreateNewFeedback", Name = "CreateNewFeedback")]
+        public async Task<IActionResult> CreateFeedBackRestaurant([FromBody] FeedbackViewModel model)
+        {
+            Result<int> result = await _restaurantGateway.CreateFeedback(model.Note, model.Feedback, model.CustomerId, model.RestaurantId);
+            return this.CreateResult(result, o =>
+            {
+                o.RouteName = "CreateNewFeedback";
+                o.RouteValues = id => new { id };
+            });
+        }
+
         /*
         [HttpPost]
         public async Task<IActionResult> CreateRestaurant([FromBody] RestaurantViewModel model)

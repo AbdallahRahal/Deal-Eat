@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, ActivityIndicator, SafeAreaView, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, ActivityIndicator, SafeAreaView, Image, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { Text, List, ListItem } from 'native-base';
 import { CustomHeader } from '../../CustomHeader';
 import Colors from '../../../constants/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import StarRating from 'react-native-star-rating';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 
@@ -17,8 +18,9 @@ export class RestaurantDetail extends React.Component {
     this.state = {
       isLoading: true,
       dataSource: [],
+      feedbackSource: [],
       id: this.props.navigation.getParam('itemId'),
-      menuSelect: 1,
+      menuSelect: 2,
       menuHoraireOpen: false,
 
     }
@@ -34,7 +36,28 @@ export class RestaurantDetail extends React.Component {
           isLoading: false,
           dataSource: responseJson
         })
-      })
+      });
+
+    fetch('http://localhost:5000/api/restaurant/getfeedbackbyrestaurant/' + this.state.id)
+      .then((response2) => response2.json())
+      .then((responseJson2) => {
+        this.setState({
+          feedbackSource: responseJson2
+        })
+      });
+    /*fetch('http://localhost:5000/api/Restaurant/CreateNewFeedback/', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        Note: 2,
+        Feedback: 'new feedback with json',
+        CustomerId: 1,
+        RestaurantId: 0
+      }),
+    });*/
   }
 
 
@@ -97,9 +120,9 @@ export class RestaurantDetail extends React.Component {
 
 
               {(this.state.menuSelect == 0) ?
-                null 
-                
-                
+                null
+
+
                 : null
               }
 
@@ -159,10 +182,10 @@ export class RestaurantDetail extends React.Component {
                     </View>
 
                     {(this.state.menuHoraireOpen) ?
-                      <View style={{flexDirection:'row',}}>
+                      <View style={{ flexDirection: 'row', }}>
 
-                        <View style={{ alignSelf:'flex-end',}}>
-                          <List style={{ flexDirection: 'column', alignItems:'flex-end',  }}>
+                        <View style={{ alignSelf: 'flex-end', }}>
+                          <List style={{ flexDirection: 'column', alignItems: 'flex-end', }}>
                             <Text style={styles.days}>   Lundi : </Text>
                             <Text style={styles.days}>   Mardi : </Text>
                             <Text style={styles.days}>   Mercredi : </Text>
@@ -173,8 +196,8 @@ export class RestaurantDetail extends React.Component {
                           </List>
                         </View>
 
-                        <View style={{ marginLeft:0,  }}>
-                          <List style={{ flexDirection: 'column', alignItems:'flex-start' }}>
+                        <View style={{ marginLeft: 0, }}>
+                          <List style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
                             <Text style={styles.daysHours}>   7:30 - 20:00   </Text>
                             <Text style={styles.daysHours}>   7:30 - 20:00   </Text>
                             <Text style={styles.daysHours}>   7:30 - 20:00   </Text>
@@ -192,6 +215,76 @@ export class RestaurantDetail extends React.Component {
                 </View>
                 : null
               }
+
+
+
+
+              {(this.state.menuSelect == 2) ?
+
+                <View style={{ flex: 5, borderWidth: 2, borderColor: 'green' }}>
+
+                  <ScrollView style={{ flex: 4, margin: 20, borderWidth: 2, borderColor: 'red' }}>
+                    {console.log(this.state.feedbackSource)}
+
+                    <View >
+                      <View  >
+                        <FlatList
+                          data={this.state.feedbackSource}
+                          contentContainerStyle={{
+                            flexDirection: 'column',
+                            flexWrap: "wrap",
+                            justifyContent: 'space-between',
+                          }}
+                          renderItem={({ item }) =>
+                            <View >
+
+                              <View style={{flexDirection:'row', borderWidth:3, borderColor:'grey'}}>
+
+                                <View style={{}}>
+                                  <Text style={{ fontWeight: 'bold', fontStyle: 'italic', }}>
+                                    {item.name}
+                                  </Text>
+                                </View>
+
+                                <View style={{ borderWidth:3, borderColor:'blue'
+                                  ,justifyContent:'flex-end' ,alignContent:'flex-end', width :200 }}>
+                                  <Text>Note :  /5</Text>
+                                </View>
+
+                              </View>
+
+
+                              <View style={{
+                                flex: 5, width: 300, minHeight: 50, backgroundColor: 'white', borderRadius: 9,
+                                alignItems: 'center', marginHorizontal: 10, marginBottom: 20, justifyContent: 'center'
+                              }}>
+                                <Text style={{ alignSelf: 'flex-start', paddingLeft: 10 }}>
+                                  {item.feedBack}
+                                </Text>
+                              </View>
+                            </View>
+
+                          }
+                          keyExtractor={item => item.feedBack}
+                        />
+                      </View>
+                    </View>
+
+                  </ScrollView>
+
+                  <View style={{
+                    margin: 0, justifyContent: 'flex-end', borderWidth: 2, borderColor: 'blue',
+                    backgroundColor: 'white', borderRadius: 3, marginHorizontal: 10, justifyContent: 'center', alignItems: 'center',
+                  }}>
+                    <Text
+                      style={{ minHeight: 50 }}>Laisser votre avis ici ...</Text>
+                  </View>
+                </View>
+
+
+                : null
+              }
+
 
 
             </View>
@@ -256,11 +349,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 65,
     marginTop: 5
-  } ,
-   daysHours: {
+  },
+  daysHours: {
     fontWeight: 'normal',
     fontSize: 15,
-    
+
     marginTop: 6
   }
 });

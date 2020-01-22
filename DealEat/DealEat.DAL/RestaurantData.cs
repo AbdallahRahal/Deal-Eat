@@ -15,7 +15,7 @@ namespace DealEat.DAL
         public string PhotoLink { get; set; }
         public int Telephone { get; set; }
         public string Category { get; set; }
-
-
+        public int Note { get; set; }
+        public string Feedback { get; set; }
     }
 }
