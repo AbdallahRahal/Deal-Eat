@@ -1,7 +1,7 @@
 <template>
-        <div id="listRestaurant" class="container">
+        <div id="infoRestaurant" class="container">
             
-                        <router-link :to="`/`">
+                        <router-link :to="`/home`">
                             <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-arrow-circle-left"></i></button>
                         </router-link>
             <h1>Modifier un restaurant</h1>

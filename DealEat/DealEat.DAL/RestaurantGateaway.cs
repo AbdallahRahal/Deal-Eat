@@ -38,7 +38,19 @@ namespace DealEat.DAL
                 return Result.Success(restaurant);
             }
         }
+        public async Task<Result<RestaurantDataWeb>> FindByIdWeb(int id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                RestaurantDataWeb restaurant = await con.QueryFirstOrDefaultAsync<RestaurantDataWeb>(
+                    @"select r.RestaurantId, r.Name, r.Adresse, r.Photolink, r.Telephone
+                    from dealeat.vRestaurant as r where r.RestaurantId = @Id ",
 
+                    new { Id = id });
+                if (restaurant == null) return Result.Failure<RestaurantDataWeb>(Status.NotFound, "Restaurant not found.");
+                return Result.Success(restaurant);
+            }
+        }
 
 
 
@@ -122,7 +134,23 @@ namespace DealEat.DAL
             }
         }
 
+        public async Task<Result<int>> CreateRestaurant(string Name, string Adresse, string PhotoLink, int Telephone, int MerchantId)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                var p = new DynamicParameters();
+                p.Add("@Name", Name);
+                p.Add("@Adresse", Adresse);
+                p.Add("@PhotoLink", PhotoLink);
+                p.Add("@Telephone", Telephone);
+                p.Add("@MerchantId", MerchantId);
+                p.Add("@RestaurantId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                await con.ExecuteAsync("dealeat.sRestaurantCreata", p, commandType: CommandType.StoredProcedure);
 
+
+                return Result.Success(p.Get<int>("@RestaurantId"));
+            }
+        }
 
         bool IsNameValid(string name) => !string.IsNullOrWhiteSpace(name);
 

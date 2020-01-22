@@ -1,80 +1,69 @@
 <template>
     <div>
+        
+            
+    <div class="container">
+        <h1>Modifier mon restaurant</h1>
         <form @submit="onSubmit($event)">
-
             <div class="form-group">
-                <label >Nom</label>
-                <input type="text" v-model="item.Name" class="form-control" required>
+                <label class="col-form-label" for="inputDefault">Nom</label>
+                <input type="text" class="form-control" v-model="item.name" style="max-width: 40%;" required>
             </div>
 
             <div class="form-group">
-                <label >Adresse</label>
-                <input type="text" v-model="item.Adresse" class="form-control" required>
+                <label class="col-form-label" for="inputDefault">Adresse</label>
+                <input type="text" class="form-control" v-model="item.adresse" style="max-width: 40%;" required>
             </div>
 
             <div class="form-group">
-                <label >Lien Photo</label>
-                <input type="text" v-model="item.Photolink" class="form-control" required>
+                <label class="col-form-label" for="inputDefault">Lien Photo</label>
+                <input type="text" class="form-control" v-model="item.photoLink" :placeholder="item.photoLink" style="max-width: 40%;" required>
             </div>
 
             <div class="form-group">
-                <label >Numero Telephone</label>
-                <input type="text" v-model="item.Telephone" class="form-control">
+                <label class="col-form-label" for="inputDefault">Numero Telephone</label>
+                <input type="text" class="form-control" v-model="item.telephone" :placeholder="item.telephone" style="max-width: 40%;" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Sauvegarder</button>
         </form>
     </div>
+    </div>
 </template>
 
 <script>
-    import { getRestaurantByIdAsync,UdpateRestaurantAsync } from '../api/restaurantApi'
+    import { getRestaurantByIdWebAsync,UpdateRestaurantAsync } from '../api/restaurantApi'
+    import { requireAuth } from '../helpers/requireAuth'
 
     export default {
         data () {
             return {
-                item: {},
                
-                id: null,
+               item: {}
                 
             }
         },
 
         async mounted() {
             
-            this.id = this.$route.params.id;
-            
-            if(this.mode == 'edit') {
-                try {
-                    const item = await getRestaurantByIdAsync(this.id);
-
-                    this.item = item;
-                }
-                catch(e) {
-                    console.error(e);
-                    this.$router.replace('/home');
-                }
-            }
+            await this.refreshList();
+                
         },
 
         methods: {
             async onSubmit(event) {
-                
                 event.preventDefault();
-                var errors = [];
-                this.errors = errors;
-
-                if(errors.length == 0) {
-                    try {
                        
-                        await UdpateRestaurantAsync(this.item);
-                        this.$router.replace('/restaurantList');
-                    }
-                    catch(e) {
-                        console.error(e);
-                    }
-                }
-            }
+                        await UpdateRestaurantAsync(this.item.restaurantId,this.item);
+                        this.$router.replace('/home');
+           
+            
+            },
+            async refreshList() {
+                    this.id = this.$route.params.id;
+                    this.item = await getRestaurantByIdWebAsync(this.id);
+            },
+
         }
     }
 </script>

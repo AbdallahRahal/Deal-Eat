@@ -25,7 +25,7 @@ namespace DealEat.WebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetReductionList()
         {
-           IEnumerable<ReductionData2> result = await _reductionGateway.GetAll();
+           IEnumerable<ReductionData> result = await _reductionGateway.GetAll();
             return Ok(result);
         }
 
@@ -38,12 +38,17 @@ namespace DealEat.WebApp.Controllers
             return Ok(result);
         }
 
-        /*[HttpGet("{id}", Name = "GetReduction")]
+        [HttpGet("{id}", Name = "GetReduction")]
         public async Task<IActionResult> GetReductionById(int id)
         {
             Result<ReductionData> result = await _reductionGateway.FindById(id);
             return this.CreateResult(result);
-        }*/
-
+        }
+        [HttpGet("restaurant/{id}", Name = "NewReduction")]
+        public async Task<IActionResult> newReduction(int id, [FromBody] SoldViewModel model)
+        {
+            Result<int> result = await _reductionGateway.CreateReduction(model.Reduction,model.Start_Date, model.End_Date,model.BracketId);
+            return this.CreateResult(result);
+        }
     }
 }

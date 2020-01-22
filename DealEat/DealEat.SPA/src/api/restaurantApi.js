@@ -9,16 +9,20 @@ export async function getRestaurantListAsync() {
 }
 
 export async function getRestaurantByIdAsync(restaurantId) {
-    return await getAsync(`${endpoint}/${restaurantId}`);
+    return await getAsync(`${endpoint}/GetRestaurant/${restaurantId}`);
 }
 
 
-export async function UdpateRestaurantAsync(restaurantId) {
-    return await getAsync(`${endpoint}/UpdateRestaurant/${restaurantId}`);
+export async function getRestaurantByIdWebAsync(restaurantId) {
+    return await getAsync(`${endpoint}/GetRestaurantWeb/${restaurantId}`);
 }
-/*
-export async function createRestaurantAsync(model) {
-    return await postAsync(endpoint, model);
+
+export async function UpdateRestaurantAsync(restaurantId,model) {
+    return await postAsync(`${endpoint}/UpdateRestaurant/${restaurantId}`,model);
+}
+
+export async function CreateRestaurantAsync(id, model) {
+    return await postAsync(`${endpoint}/CreateRestaurant/${id}`, model);
 }
 
 /*export async function deleteRestaurantAsync(restaurantId) {

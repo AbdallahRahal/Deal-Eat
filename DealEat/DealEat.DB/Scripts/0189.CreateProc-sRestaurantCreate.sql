@@ -1,4 +1,4 @@
-create proc dealeat.sRestaurantCreate
+create proc dealeat.sRestaurantCreata
 (
 	@Name nvarchar(45),
 	@Adresse nvarchar(45),
@@ -14,12 +14,13 @@ begin
 
 	begin tran;
 
-	if exists(select * from dealeat.uRestaurant r where r.[Name] = @Name and r.PhotoLink = @PhotoLink and r.Adresse = @Adresse)
+	if exists(select * from dealeat.tRestaurant r where r.[Name] = @Name and r.PhotoLink = @PhotoLink and r.Adresse = @Adresse)
 	begin
 		rollback;
 		return 1;
 	end;
-
+	insert into dealeat.tRestaurant( [Name], Adresse, PhotoLink, Telephone, MerchantId) values(@Name, @Adresse, @PhotoLink, @Telephone, @MerchantId);
+	
 	set @RestaurantId = scope_identity();
 	commit;
 	return 0;

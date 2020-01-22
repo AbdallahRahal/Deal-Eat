@@ -28,6 +28,7 @@
                     </div>
             </nav>
         </header>
+
     <div>
                 
     </div>
@@ -52,7 +53,8 @@ export default {
 
     mounted() {
         AuthService.registerAuthenticatedCallback(() => this.onAuthenticated());
-       this.email = AuthService.email;
+        this.email = AuthService.email;
+
     },
 
     beforeDestroy() {

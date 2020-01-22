@@ -60,7 +60,6 @@ export class Reduction extends React.Component {
 
 
             <View style={{ flex: 5 , paddingTop:15}}>
-              {console.log(this.state.ReductionSource)}
 
               <FlatList
                 data={this.state.ReductionSource}
@@ -70,7 +69,7 @@ export class Reduction extends React.Component {
                 }}
                 renderItem={({ item }) =>
 
-                
+
                   <View>
                     <View style={{
                       borderColor: 'green', borderWidth: 3
