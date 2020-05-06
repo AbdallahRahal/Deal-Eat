@@ -104,8 +104,11 @@ class AuthService {
                 'Content-Type': 'application/json'
             }
         });
+        console.log(" result token = "+result.ok)
         if (result.ok) {
+
             let token = await result.json();
+            console.log(" result json = "+ token.success)
             if (token.success) return token;
         }
 

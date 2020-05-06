@@ -32,13 +32,7 @@ namespace DealEat.WebApp.Controllers
             _random = new Random();
         }
 
-        [HttpGet]
-        [AllowAnonymous]
-        public IActionResult Login()
-        {
-            return View();
-        }
-
+        
 
         [HttpGet]
         [AllowAnonymous]
@@ -93,6 +87,13 @@ namespace DealEat.WebApp.Controllers
             return View();
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult RegisterMerchant()
+        {
+            return View();
+        }
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -113,6 +114,25 @@ namespace DealEat.WebApp.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegisterMerchant(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Result<int> result = await _userService.CreateMerchant(model.Email, model.Name, model.LastName, model.Pseudo, model.Telephone, model.Password);
+                if (result.HasError)
+                {
+                    ModelState.AddModelError(string.Empty, result.ErrorMessage);
+                    return View(model);
+                }
+                await SignIn(model.Email, result.Content.ToString());
+                return RedirectToAction(nameof(Authenticated));
+            }
+
+            return View("Register", model);
+        }
         [HttpGet]
         [Authorize(AuthenticationSchemes = CookieAuthentication.AuthenticationScheme)]
         public async Task<IActionResult> LogOff()

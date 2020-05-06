@@ -12,6 +12,7 @@ using DealEat.DAL;
 namespace DealEat.WebApp.Controllers
 {
     [Route("api/[controller]")]
+   
     public class RestaurantController : Controller
     {
         readonly RestaurantGateway _restaurantGateway;

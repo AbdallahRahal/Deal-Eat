@@ -1,12 +1,12 @@
 @using DealEat.WebApp.Services
 
 @{
-    string spaHost = ( string )ViewData[ "SpaHost" ];
-    Token token = ( Token )ViewData[ "Token" ];
-    string email = ( string )ViewData[ "Email" ];
-    string breachPadding = ( string )ViewData[ "BreachPadding" ];
-    IEnumerable<string> providers = ( IEnumerable<string> )ViewData[ "Providers" ];
-    string providerNames = string.Join( ",", providers.Select( p => string.Format( "'{0}'", p ) ) );
+    string spaHost = (string)ViewData["SpaHost"];
+    Token token = (Token)ViewData["Token"];
+    string email = (string)ViewData["Email"];
+    string breachPadding = (string)ViewData["BreachPadding"];
+    IEnumerable<string> providers = (IEnumerable<string>)ViewData["Providers"];
+    string providerNames = string.Join(",", providers.Select(p => string.Format("'{0}'", p)));
 }
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Authenticated</title>
 </head>
-<body>
+<body>AuthenticatheD
     <script>
         (function () {
             window.opener.postMessage({
@@ -27,10 +27,10 @@
                         expires_in: @token.ExpiresIn
                     },
                     email: '@email',
-                    boundProviders: [@Html.Raw( providerNames )]
+                    
                 }
             }, '@spaHost');
-
+              @{Console.WriteLine(" token envoyé est le : {0}",@token.AccessToken); }
             window.close();
         })();
     </script>

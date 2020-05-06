@@ -19,7 +19,15 @@ namespace DealEat.WebApp.Services
         {
             return _userGateway.CreateUser(email, name, lastname,pseudo, tel, _passwordHasher.HashPassword(password));
         }
-
+        public Task<Result<int>> CreateMerchant(string email, string name, string lastname, string pseudo, int tel, string password)
+        {
+            Task<Result<int>> user = _userGateway.CreateUser(email, name, lastname, pseudo, tel, _passwordHasher.HashPassword(password));
+            if (!user.Result.HasError)
+            {
+              return _userGateway.CreateMerchant(user.Result.Content);
+            }
+            return user;
+        }
         public async Task<UserData> FindUser(string email, string password)
         {
             UserData user = await _userGateway.FindByEmail(email);

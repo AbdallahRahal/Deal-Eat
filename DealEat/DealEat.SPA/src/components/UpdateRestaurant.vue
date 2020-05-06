@@ -15,9 +15,9 @@
                 <input type="text" class="form-control" v-model="item.adresse" style="max-width: 40%;" required>
             </div>
 
-            <div class="form-group">
+          <div class="form-group">
                 <label class="col-form-label" for="inputDefault">Lien Photo</label>
-                <input type="text" class="form-control" v-model="item.photoLink" :placeholder="item.photoLink" style="max-width: 40%;" required>
+                <input type="text" class="form-control" v-model="item.photoLink" :placeholder="item.photoLink" style="max-width: 40%;font-family: revert;" required>
             </div>
 
             <div class="form-group">

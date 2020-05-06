@@ -3,6 +3,7 @@ using System.IO;
 using System.Reflection;
 using DbUp;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
 
 namespace DealEat.DB
 {
@@ -12,6 +13,7 @@ namespace DealEat.DB
 
         public static int Main( string[] args )
         {
+
             var connectionString = Configuration[ "ConnectionStrings:DealEatDB" ];
 
             EnsureDatabase.For.SqlDatabase( connectionString );
@@ -44,10 +46,11 @@ namespace DealEat.DB
         {
             get
             {
+                
                 if( _configuration == null )
                 {
                     _configuration = new ConfigurationBuilder()
-                        .SetBasePath( Directory.GetCurrentDirectory() )
+                        .SetBasePath( Directory.GetCurrentDirectory())
                         .AddJsonFile( "appsettings.json", optional: false )
                         .AddEnvironmentVariables()
                         .Build();

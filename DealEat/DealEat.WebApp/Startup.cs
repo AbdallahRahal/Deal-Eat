@@ -55,6 +55,8 @@ namespace DealEat.WebApp
                     o.ExpireTimeSpan = TimeSpan.FromHours(1);
                     o.SlidingExpiration = true;
                 });
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             
         }
@@ -76,6 +78,7 @@ namespace DealEat.WebApp
                 c.AllowAnyMethod();
                 c.AllowCredentials();
                 c.WithOrigins(Configuration["Spa:Host"]);
+                c.WithOrigins("http://localhost/5000");
             });
             app.UseStaticFiles();
 

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DealEat.DAL;
 using DealEat.WebApp.Authentication;
 using DealEat.WebApp.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DealEat.WebApp.Controllers
@@ -22,6 +23,7 @@ namespace DealEat.WebApp.Controllers
         }
 
         [HttpGet]
+        [Authorize(AuthenticationSchemes = CookieAuthentication.AuthenticationScheme)]
         public async Task<IActionResult> Token()
         {
             var identity = User.Identities.SingleOrDefault( i => i.AuthenticationType == CookieAuthentication.AuthenticationScheme );
@@ -30,7 +32,7 @@ namespace DealEat.WebApp.Controllers
             string userId = identity.FindFirst( ClaimTypes.NameIdentifier ).Value;
             string email = identity.FindFirst( ClaimTypes.Email ).Value;
             Token token = _tokenService.GenerateToken( userId, email );
-            IEnumerable<string> providers = await _userGateway.GetAuthenticationProviders( userId );
+            IEnumerable<string> providers =  new string[] { "Dealeat" }; 
             return Ok( new { Success = true, Bearer = token, Email = email, BoundProviders = providers } );
         }
     }

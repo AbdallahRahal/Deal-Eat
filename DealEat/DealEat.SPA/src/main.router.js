@@ -7,7 +7,7 @@ import requireAuth from './helpers/requireAuth';
 
 // Components
 import Home from './components/Home.vue'
-import Login from './components/Login.vue'
+import LoginMerchant from './components/LoginMerchant.vue'
 import Logout from './components/Logout.vue'
 import ReductionList from './components/ReductionList.vue'
 import RestaurantInfo from './components/RestaurantInfo.vue'
@@ -20,7 +20,7 @@ import NewReduction from './components/NewReduction.vue'
 const routes = [
     { path: '/home', component: Home , beforeEnter: requireAuth},
     { path: '', component: Home, beforeEnter: requireAuth },
-    { path: '/login', component: Login },
+    { path: '/login', component: LoginMerchant },
     { path: '/updateRestaurant/:id', component: UpdateRestaurant, beforeEnter: requireAuth },
     { path: '/reductionList', component: ReductionList, beforeEnter: requireAuth  },
     { path: '/newreduction/:id', component: NewReduction, beforeEnter: requireAuth  },
